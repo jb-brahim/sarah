@@ -1,0 +1,355 @@
+{
+	"info": {
+		"_postman_id": "e5b9e9e0-5f1a-4c1c-8c1e-5f1a4c1c8c1e",
+		"name": "Portail Touristique Intelligent",
+		"description": "API collection for testing the Portail Touristique Intelligent backend",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Sign Up",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Test User\",\n    \"email\": \"test@example.com\",\n    \"password\": \"password123\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/auth/signup",
+							"host": ["{{base_url}}"],
+							"path": ["api", "auth", "signup"]
+						}
+					}
+				},
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"test@example.com\",\n    \"password\": \"password123\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/auth/login",
+							"host": ["{{base_url}}"],
+							"path": ["api", "auth", "login"]
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "Sites",
+			"item": [
+				{
+					"name": "Get All Sites",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/sites",
+							"host": ["{{base_url}}"],
+							"path": ["api", "sites"]
+						}
+					}
+				},
+				{
+					"name": "Create Site",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Medina of Fez\",\n    \"description\": {\n        \"en\": \"Historic medieval city\",\n        \"fr\": \"Ville médiévale historique\",\n        \"ar\": \"المدينة التاريخية\"\n    },\n    \"location\": {\n        \"coordinates\": [34.0333, -5.0000],\n        \"address\": \"Fez, Morocco\"\n    },\n    \"category\": \"historical\",\n    \"entryFee\": 50\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/sites",
+							"host": ["{{base_url}}"],
+							"path": ["api", "sites"]
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "Hotels",
+			"item": [
+				{
+					"name": "Get All Hotels",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/hotels",
+							"host": ["{{base_url}}"],
+							"path": ["api", "hotels"]
+						}
+					}
+				},
+				{
+					"name": "Create Hotel",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Luxury Palace\",\n    \"description\": \"5-star luxury hotel\",\n    \"address\": \"123 Main St, City\",\n    \"location\": {\n        \"coordinates\": [34.0333, -5.0000]\n    },\n    \"amenities\": [\"wifi\", \"pool\", \"spa\"]\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/hotels",
+							"host": ["{{base_url}}"],
+							"path": ["api", "hotels"]
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "Reservations",
+			"item": [
+				{
+					"name": "Create Reservation",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"hotel\": \"{{hotel_id}}\",\n    \"room\": \"{{room_id}}\",\n    \"from\": \"2025-12-01\",\n    \"to\": \"2025-12-05\",\n    \"price\": 1000\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/reservations",
+							"host": ["{{base_url}}"],
+							"path": ["api", "reservations"]
+						}
+					}
+				},
+				{
+					"name": "Get User Reservations",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/reservations",
+							"host": ["{{base_url}}"],
+							"path": ["api", "reservations"]
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "Tours",
+			"item": [
+				{
+					"name": "Get All Tours",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/tours",
+							"host": ["{{base_url}}"],
+							"path": ["api", "tours"]
+						}
+					}
+				},
+				{
+					"name": "Create Tour",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"title\": \"Historic City Tour\",\n    \"description\": {\n        \"en\": \"Explore the historic medina\",\n        \"fr\": \"Explorez la médina historique\"\n    },\n    \"site\": \"{{site_id}}\",\n    \"availableDates\": [\"2025-12-01\", \"2025-12-15\"],\n    \"guides\": [\"John Doe\", \"Jane Smith\"],\n    \"price\": 200\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/tours",
+							"host": ["{{base_url}}"],
+							"path": ["api", "tours"]
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "Weather",
+			"item": [
+				{
+					"name": "Get Site Weather",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/weather/{{site_id}}",
+							"host": ["{{base_url}}"],
+							"path": ["api", "weather", "{{site_id}}"]
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "Translation",
+			"item": [
+				{
+					"name": "Translate Text",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"text\": \"Welcome to Morocco\",\n    \"source\": \"en\",\n    \"target\": \"fr\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/translate",
+							"host": ["{{base_url}}"],
+							"path": ["api", "translate"]
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "Recommendations",
+			"item": [
+				{
+					"name": "Get Recommendations",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/recommendations",
+							"host": ["{{base_url}}"],
+							"path": ["api", "recommendations"]
+						}
+					}
+				},
+				{
+					"name": "Get Nearby Sites",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/recommendations/nearby/34.0333/-5.0000",
+							"host": ["{{base_url}}"],
+							"path": ["api", "recommendations", "nearby", "34.0333", "-5.0000"]
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "Admin",
+			"item": [
+				{
+					"name": "Get Stats",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/admin/stats",
+							"host": ["{{base_url}}"],
+							"path": ["api", "admin", "stats"]
+						}
+					}
+				},
+				{
+					"name": "Get Users",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/admin/users",
+							"host": ["{{base_url}}"],
+							"path": ["api", "admin", "users"]
+						}
+					}
+				}
+			]
+		}
+	]
+}

@@ -1,0 +1,36 @@
+# Root: ignore everything by default, then explicitly allow only the two
+# project folders we want tracked: sara-be and sara-fe.
+
+# Ignore everything at repo root
+/*
+
+# Keep this file tracked
+!/.gitignore
+
+# Allow the two project directories and their entire contents
+!/sara-be/
+!/sara-be/**
+!/sara-fe/
+!/sara-fe/**
+
+# Within allowed directories, still ignore common dependency and build folders
+# (these entries are specific and safe to keep local)
+/sara-be/node_modules/
+/sara-fe/node_modules/
+/sara-be/.env
+/sara-fe/.env
+/sara-be/dist/
+/sara-fe/.next/
+/sara-fe/build/
+
+# Logs and runtime
+/sara-be/*.log
+/sara-fe/*.log
+
+# Optional: coverage output
+/sara-be/coverage/
+/sara-fe/coverage/
+
+# Prevent accidentally adding nested git repositories
+**/.git
+

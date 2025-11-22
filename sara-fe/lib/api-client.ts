@@ -1,7 +1,10 @@
-// Default API base should point to the backend server (port 3000).
+// Default API base should point to the deployed backend server.
+// Uses `NEXT_PUBLIC_API_URL` when set (e.g. in Vercel/Render env), otherwise
+// falls back to the production backend at `https://sarah-duke.onrender.com/api`.
+export const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || "https://sarah-duke.onrender.com/api"
+/*// Default API base should point to the backend server (port 3000).
 // Next dev may run on 3001 if 3000 is busy, but the backend typically listens on 3000.
-export const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:3000/api"
-
+export const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:3000/api"*/
 // Helper to get auth header with token
 const getAuthHeader = () => {
   if (typeof window === 'undefined') return {}

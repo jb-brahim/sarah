@@ -36,6 +36,10 @@ const allowedOrigins = process.env.NODE_ENV === 'production' ? parseAllowedOrigi
 
 const corsOptions = {
   origin: (origin, callback) => {
+    // Shortcut: allow all origins when explicitly enabled via env var.
+    // Use only for debugging/testing; in production prefer setting
+    // `FRONTEND_URLS` or `FRONTEND_URL` to restrict origins.
+    if (process.env.ALLOW_ALL_ORIGINS === 'true') return callback(null, true);
     // Allow requests with no origin (e.g. server-to-server, mobile clients, or same-origin)
     if (!origin) return callback(null, true);
     // If no allowed origins specified in production, deny unknown origins to be safe

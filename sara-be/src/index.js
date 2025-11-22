@@ -34,6 +34,15 @@ const defaultDevOrigins = ['http://localhost:3000', 'http://localhost:3001', 'ht
 
 const allowedOrigins = process.env.NODE_ENV === 'production' ? parseAllowedOrigins() : defaultDevOrigins;
 
+// Log resolved CORS configuration at startup to aid debugging in production logs
+console.log('CORS configuration:', {
+  NODE_ENV: process.env.NODE_ENV,
+  ALLOW_ALL_ORIGINS: process.env.ALLOW_ALL_ORIGINS === 'true',
+  FRONTEND_URLS: process.env.FRONTEND_URLS,
+  FRONTEND_URL: process.env.FRONTEND_URL,
+  allowedOrigins
+});
+
 const corsOptions = {
   origin: (origin, callback) => {
     // Shortcut: allow all origins when explicitly enabled via env var.

@@ -1,5 +1,6 @@
 import type React from "react"
 import { Shield, Wifi, Zap, Globe } from "lucide-react"
+import { useLanguage } from "@/lib/language-context"
 
 interface Feature {
   icon: React.ReactNode
@@ -8,41 +9,42 @@ interface Feature {
   gradient: string
 }
 
-const features: Feature[] = [
-  {
-    icon: <Shield size={24} />,
-    title: "Privacy-First Design",
-    description: "On-device processing. No tracking. Your data stays yours.",
-    gradient: "from-primary to-accent/50",
-  },
-  {
-    icon: <Wifi size={24} />,
-    title: "Offline-First",
-    description: "Build itineraries, explore destinations offline. Sync when ready.",
-    gradient: "from-accent to-primary/50",
-  },
-  {
-    icon: <Zap size={24} />,
-    title: "AI-Powered",
-    description: "Intelligent recommendations that learn your preferences.",
-    gradient: "from-primary/70 to-accent",
-  },
-  {
-    icon: <Globe size={24} />,
-    title: "Multi-Language",
-    description: "Support for English, French, and Arabic with RTL support.",
-    gradient: "from-accent/70 to-primary",
-  },
-]
-
 export default function FeatureShowcase() {
+  const { t } = useLanguage()
+
+  const features: Feature[] = [
+    {
+      icon: <Shield size={24} />,
+      title: t('features.privacy', 'Privacy-First Design'),
+      description: t('features.privacyDesc', 'On-device processing. No tracking. Your data stays yours.'),
+      gradient: "from-primary to-accent/50",
+    },
+    {
+      icon: <Wifi size={24} />,
+      title: t('features.offline', 'Offline-First'),
+      description: t('features.offlineDesc', 'Build itineraries, explore destinations offline. Sync when ready.'),
+      gradient: "from-accent to-primary/50",
+    },
+    {
+      icon: <Zap size={24} />,
+      title: t('features.ai', 'AI-Powered'),
+      description: t('features.aiDesc', 'Intelligent recommendations that learn your preferences.'),
+      gradient: "from-primary/70 to-accent",
+    },
+    {
+      icon: <Globe size={24} />,
+      title: t('features.multilang', 'Multi-Language'),
+      description: t('features.multilangDesc', 'Support for English, French, and Arabic with RTL support.'),
+      gradient: "from-accent/70 to-primary",
+    },
+  ]
+
   return (
     <section className="space-y-8">
       <div className="text-center">
-        <h2 className="text-3xl font-bold text-foreground mb-4">Why Portail Touristique?</h2>
+        <h2 className="text-3xl font-bold text-foreground mb-4">{t('features.title', 'Why Portail Touristique?')}</h2>
         <p className="text-muted-foreground max-w-2xl mx-auto">
-          Built for the future with the latest web standards, privacy-respecting architecture, and delightful user
-          experiences.
+          {t('features.description', 'Built for the future with the latest web standards, privacy-respecting architecture, and delightful user experiences.')}
         </p>
       </div>
 
@@ -75,12 +77,12 @@ export default function FeatureShowcase() {
 
       {/* CTA Section */}
       <div className="bg-gradient-to-br from-primary/20 via-accent/10 to-primary/20 rounded-3xl p-8 md:p-12 border border-primary/20 text-center space-y-6">
-        <h3 className="text-2xl md:text-3xl font-bold text-foreground">Ready to experience the future of travel?</h3>
+        <h3 className="text-2xl md:text-3xl font-bold text-foreground">{t('features.cta', 'Ready to experience the future of travel?')}</h3>
         <p className="text-muted-foreground max-w-xl mx-auto">
-          Start exploring destinations with AI-powered recommendations, all while maintaining your privacy.
+          {t('features.ctaDesc', 'Start exploring destinations with AI-powered recommendations, all while maintaining your privacy.')}
         </p>
         <button className="px-8 py-3 bg-primary text-primary-foreground rounded-lg font-semibold hover:bg-primary/90 transition-all duration-300 hover:shadow-lg hover:shadow-primary/20">
-          Get Started Today
+          {t('features.getStarted', 'Get Started Today')}
         </button>
       </div>
     </section>

@@ -155,6 +155,141 @@ const sitesData = [
     ],
     category: "Historical",
     entryFee: 80
+  },
+  {
+    name: "Christ the Redeemer",
+    description: { en: "Iconic art deco statue of Jesus Christ overlooking Rio de Janeiro, Brazil. Standing 98 feet tall atop Mount Corcovado, it offers panoramic views of the city and Guanabara Bay. Built in 1931, it has become a symbol of Brazil and one of the New Seven Wonders of the World." },
+    location: {
+      type: 'Point',
+      coordinates: [-43.2123, -22.9519],
+      address: "Rio de Janeiro, Brazil"
+    },
+    images: [
+      "https://upload.wikimedia.org/wikipedia/commons/e/e5/Christ_the_Redeemer_-_2013_-_1.JPG",
+      "https://upload.wikimedia.org/wikipedia/commons/9/9d/Cristo_Redentor_Rio_de_Janeiro_Brasil.jpg"
+    ],
+    category: "Monument",
+    entryFee: 30
+  },
+  {
+    name: "Petra",
+    description: { en: "Carved from rose-colored sandstone, Petra is an ancient city in southwestern Jordan. Built by the Nabateans in the 1st century BC, this UNESCO World Heritage Site showcases remarkable rock-cut architecture. The Treasury and Monastery are among its most iconic structures." },
+    location: {
+      type: 'Point',
+      coordinates: [35.4272, 30.3286],
+      address: "Ma'an Governorate, Jordan"
+    },
+    images: [
+      "https://upload.wikimedia.org/wikipedia/commons/c/c7/Treasury_Petra_80x120.jpg",
+      "https://upload.wikimedia.org/wikipedia/commons/5/54/Petra_wide.jpg"
+    ],
+    category: "Historical",
+    entryFee: 50
+  },
+  {
+    name: "Angkor Wat",
+    description: { en: "The largest religious monument in the world, Angkor Wat is a 12th-century temple complex in Cambodia. Originally built as a Hindu temple dedicated to Vishnu, it later transformed into a Buddhist temple. Its intricate carvings and architectural grandeur make it a masterpiece of Khmer civilization." },
+    location: {
+      type: 'Point',
+      coordinates: [103.8674, 13.3667],
+      address: "Siem Reap, Cambodia"
+    },
+    images: [
+      "https://upload.wikimedia.org/wikipedia/commons/d/d4/Angkor_Wat_2009.jpg",
+      "https://upload.wikimedia.org/wikipedia/commons/0/0d/20091029_Angkor_Wat_Sunrise_11x15.jpg"
+    ],
+    category: "Historical",
+    entryFee: 37
+  },
+  {
+    name: "Santorini",
+    description: { en: "A stunning Greek island in the Aegean Sea known for its white-washed buildings with blue domes, dramatic cliffs, and beautiful sunsets. Santorini is a perfect destination for romance and relaxation. The island also offers excellent local wine and Mediterranean cuisine." },
+    location: {
+      type: 'Point',
+      coordinates: [25.4615, 36.4176],
+      address: "Cyclades, Greece"
+    },
+    images: [
+      "https://upload.wikimedia.org/wikipedia/commons/3/39/Santorini_view_from_stairs.jpg",
+      "https://upload.wikimedia.org/wikipedia/commons/e/e1/Santorini_-_2011_-_Library_of_Congress_1.jpg"
+    ],
+    category: "Beach",
+    entryFee: 0
+  },
+  {
+    name: "Big Ben & Parliament",
+    description: { en: "Big Ben, officially the Elizabeth Tower, stands at the Palace of Westminster in London. This iconic Gothic Revival clock tower has become a symbol of Britain. Visitors can explore the historic Houses of Parliament and Big Ben, experiencing centuries of political history." },
+    location: {
+      type: 'Point',
+      coordinates: [-0.1247, 51.4975],
+      address: "London, United Kingdom"
+    },
+    images: [
+      "https://upload.wikimedia.org/wikipedia/commons/9/9f/Elizabeth_Tower_%28Big_Ben%29_from_across_the_Thames.jpg",
+      "https://upload.wikimedia.org/wikipedia/commons/8/87/Palace_of_Westminster_from_across_the_River_Thames_%28Nov_2012%29.jpg"
+    ],
+    category: "Monument",
+    entryFee: 25
+  },
+  {
+    name: "Niagara Falls",
+    description: { en: "One of the most powerful waterfalls in the world, Niagara Falls straddles the border between Canada and the United States. With three cascades, it produces a thunderous roar and misty spray. Visitors can experience the falls from boat tours, observation towers, and scenic trails." },
+    location: {
+      type: 'Point',
+      coordinates: [-81.0895, 43.0896],
+      address: "Ontario, Canada"
+    },
+    images: [
+      "https://upload.wikimedia.org/wikipedia/commons/4/45/Niagara_falls_ontario_DB.jpg",
+      "https://upload.wikimedia.org/wikipedia/commons/0/08/Niagara_Falls_%28Horseshoe%29.jpg"
+    ],
+    category: "Nature",
+    entryFee: 0
+  },
+  {
+    name: "Alhambra",
+    description: { en: "A palatial fortress and artistic marvel located in Granada, Spain. Built during the Nasrid dynasty in the 13th-15th centuries, the Alhambra showcases exquisite Islamic architecture with intricate tile work, stucco decoration, and beautiful gardens." },
+    location: {
+      type: 'Point',
+      coordinates: [-3.5882, 37.1758],
+      address: "Granada, Spain"
+    },
+    images: [
+      "https://upload.wikimedia.org/wikipedia/commons/0/0a/Alhambra%2C_Granada%2C_Andalusia%2C_Spain.jpg",
+      "https://upload.wikimedia.org/wikipedia/commons/8/86/Alhambra_courtyard%2C_Granada.jpg"
+    ],
+    category: "Historical",
+    entryFee: 16
+  },
+  {
+    name: "Mount Fuji",
+    description: { en: "Japan's tallest mountain at 12,388 feet, Mount Fuji is an iconic symbol of the country. Its distinctive snow-capped peak can be seen from Tokyo on clear days. The mountain is sacred in Japanese culture and attracts climbers and pilgrims year-round." },
+    location: {
+      type: 'Point',
+      coordinates: [138.7274, 35.3606],
+      address: "Yamanashi Prefecture, Japan"
+    },
+    images: [
+      "https://upload.wikimedia.org/wikipedia/commons/0/0c/Mt_Fuji_from_Yamanakako_2013-11-02.jpg",
+      "https://upload.wikimedia.org/wikipedia/commons/5/57/Mt._Fuji_from_Lake_Kawaguchi_%282013-11-02%29.jpg"
+    ],
+    category: "Nature",
+    entryFee: 0
+  },
+  {
+    name: "Sagrada Familia",
+    description: { en: "An exquisite basilica in Barcelona, Spain, designed by Antoni Gaudí. Construction began in 1883 and continues to this day, making it one of the most unique churches in the world. Its intricate Gothic and modernist style, with organic forms and stunning stained glass windows, makes it a must-see architectural masterpiece." },
+    location: {
+      type: 'Point',
+      coordinates: [2.1744, 41.4036],
+      address: "Barcelona, Spain"
+    },
+    images: [
+      "https://upload.wikimedia.org/wikipedia/commons/6/6d/Sagrada_Familia_nave_roof.jpg",
+      "https://upload.wikimedia.org/wikipedia/commons/a/a7/Sagrada_Familia%2C_Barcelona.jpg"
+    ],
+    category: "Monument",
+    entryFee: 26
   }
 ];
 
@@ -212,7 +347,7 @@ const hotelsData = [
     amenities: ["WiFi", "Gym", "Restaurant", "Bar", "Rooftop Terrace"],
     images: [
       "https://source.unsplash.com/800x600/?hotel,rome",
-      "https://source.unsplash.com/800x600/?hotel,arred"
+      "https://source.unsplash.com/800x600/?hotel,italy"
     ]
   },
   {
@@ -226,7 +361,7 @@ const hotelsData = [
     amenities: ["WiFi", "Restaurant", "Bar", "Taj Mahal View", "Garden"],
     images: [
       "https://source.unsplash.com/800x600/?hotel,agra",
-      "https://source.unsplash.com/800x600/?taj+mahal+view"
+      "https://source.unsplash.com/800x600/?taj+mahal"
     ]
   },
   {
@@ -239,8 +374,92 @@ const hotelsData = [
     },
     amenities: ["WiFi", "Restaurant", "Nature Walks", "Spa", "Terrace"],
     images: [
-      "https://source.unsplash.com/800x600/?lodge,machu+picchu",
-      "https://source.unsplash.com/800x600/?sacred+valley,peru"
+      "https://source.unsplash.com/800x600/?lodge,mountain",
+      "https://source.unsplash.com/800x600/?peru,lodge"
+    ]
+  },
+  {
+    name: "Copacabana Palace",
+    description: "Legendary 5-star beachfront hotel in Rio de Janeiro. Located on the famous Copacabana Beach with stunning ocean views. Offers world-class amenities, fine dining, and direct access to Rio's vibrant beach culture. Perfect for luxury beach vacations.",
+    address: "Avenida Atlântica 1702, Rio de Janeiro",
+    location: {
+      type: 'Point',
+      coordinates: [-43.1840, -22.9773]
+    },
+    amenities: ["WiFi", "Gym", "Restaurant", "Bar", "Beach Access", "Pool", "Spa"],
+    images: [
+      "https://source.unsplash.com/800x600/?hotel,rio",
+      "https://source.unsplash.com/800x600/?hotel,beach,brazil"
+    ]
+  },
+  {
+    name: "Petra Sands Resort",
+    description: "Luxury resort near the ancient city of Petra in Jordan. Combines modern comfort with proximity to archaeological wonders. Features stunning desert views, excellent Jordanian cuisine, and knowledgeable guides for Petra tours. Ideal for history and culture enthusiasts.",
+    address: "Wadi Musa, Petra Region",
+    location: {
+      type: 'Point',
+      coordinates: [35.4272, 30.3286]
+    },
+    amenities: ["WiFi", "Restaurant", "Bar", "Tour Services", "Garden"],
+    images: [
+      "https://source.unsplash.com/800x600/?hotel,desert",
+      "https://source.unsplash.com/800x600/?resort,jordan"
+    ]
+  },
+  {
+    name: "Angkor Archaeological Hotel",
+    description: "Historic hotel in Siem Reap with easy access to the Angkor Wat temple complex. Combines colonial charm with modern amenities. Features knowledgeable staff, excellent Khmer cuisine, and organized tours to nearby temples. Perfect base for exploring Cambodia's cultural heritage.",
+    address: "Street 60, Siem Reap",
+    location: {
+      type: 'Point',
+      coordinates: [103.8674, 13.3667]
+    },
+    amenities: ["WiFi", "Restaurant", "Bar", "Tour Desk", "Spa"],
+    images: [
+      "https://source.unsplash.com/800x600/?hotel,cambodia",
+      "https://source.unsplash.com/800x600/?angkor,hotel"
+    ]
+  },
+  {
+    name: "Santorini Sunset Villa",
+    description: "Exclusive cliff-top villa resort in Santorini with unparalleled views of the Aegean Sea and sunset. Features private pools, whitewashed suites, and fine dining. Perfect romantic destination with exceptional Greek hospitality and Mediterranean cuisine.",
+    address: "Oia, Santorini",
+    location: {
+      type: 'Point',
+      coordinates: [25.4615, 36.4176]
+    },
+    amenities: ["WiFi", "Pool", "Restaurant", "Bar", "Spa", "Sunset Views"],
+    images: [
+      "https://source.unsplash.com/800x600/?hotel,santorini",
+      "https://source.unsplash.com/800x600/?greece,sunset"
+    ]
+  },
+  {
+    name: "The Goring London",
+    description: "Luxury 5-star hotel in the heart of London's Belgravia district. Just steps from Buckingham Palace and iconic attractions. Features elegant rooms, Michelin-starred dining, and personalized service. Perfect for experiencing British hospitality at its finest.",
+    address: "Beeston Place, London",
+    location: {
+      type: 'Point',
+      coordinates: [-0.1494, 51.4998]
+    },
+    amenities: ["WiFi", "Gym", "Restaurant", "Bar", "Concierge", "Spa"],
+    images: [
+      "https://source.unsplash.com/800x600/?hotel,london",
+      "https://source.unsplash.com/800x600/?london,luxury"
+    ]
+  },
+  {
+    name: "Fallsview Hotel & Spa",
+    description: "Luxury resort with stunning views of Niagara Falls. Located directly overlooking the cascades with direct access to the Fallsview Tourism Experience. Features spa services, fine dining restaurants, and unforgettable views of one of the world's greatest natural wonders.",
+    address: "6755 Fallsview Boulevard, Niagara Falls",
+    location: {
+      type: 'Point',
+      coordinates: [-81.0895, 43.0896]
+    },
+    amenities: ["WiFi", "Gym", "Restaurant", "Bar", "Spa", "Falls View", "Pool"],
+    images: [
+      "https://source.unsplash.com/800x600/?hotel,niagara",
+      "https://source.unsplash.com/800x600/?niagara+falls"
     ]
   }
 ];
@@ -304,6 +523,69 @@ const toursData = [
     guides: ["Carlos Mamani"],
     availableDates: ["2024-06-01", "2024-07-01", "2024-08-01"],
     price: 1100
+  },
+  {
+    title: "Rio de Janeiro Beach & Culture",
+    description: { en: "4-day tour of Rio de Janeiro including Christ the Redeemer statue, Sugarloaf Mountain cable car, Copacabana and Ipanema beaches, and samba culture. Includes professional guide, beach activities, and authentic Brazilian cuisine and nightlife." },
+    guides: ["Carlos Silva"],
+    availableDates: ["2024-07-05", "2024-08-05", "2024-09-05"],
+    price: 920
+  },
+  {
+    title: "Petra & Dead Sea Discovery",
+    description: { en: "3-day desert adventure exploring the ancient rose-red city of Petra and floating in the Dead Sea. Includes expert guides explaining Nabatean history, visits to nearby Wadi Musa, and spa treatments using mineral-rich Dead Sea waters." },
+    guides: ["Ahmed Hassan"],
+    availableDates: ["2024-08-10", "2024-09-10", "2024-10-10"],
+    price: 580
+  },
+  {
+    title: "Angkor Wat & Temple Complex",
+    description: { en: "4-day tour of Cambodia's most significant temples including the legendary Angkor Wat, Bayon Temple, and Ta Prohm. Includes sunrise viewing from temple tops, guided history lessons, visits to artisan villages, and authentic Khmer cooking class." },
+    guides: ["Sokhai Meng"],
+    availableDates: ["2024-09-01", "2024-10-01", "2024-11-01"],
+    price: 680
+  },
+  {
+    title: "Santorini Romance Package",
+    description: { en: "3-day romantic getaway in Santorini featuring white-washed villages, stunning sunsets, volcanic beaches, and local wine tasting. Includes boat tours, blue-domed church visits, traditional Greek dinner, and sunset sailing around the caldera." },
+    guides: ["Dimitrios Papadopoulos"],
+    availableDates: ["2024-10-15", "2024-11-15", "2024-12-15"],
+    price: 1050
+  },
+  {
+    title: "London Royal & Historic",
+    description: { en: "3-day comprehensive London tour visiting Buckingham Palace, Tower of London, Big Ben, Westminster Abbey, and the British Museum. Includes expert historian guide, traditional afternoon tea, and Thames River cruise with historical commentary." },
+    guides: ["Elizabeth Williams"],
+    availableDates: ["2024-11-01", "2024-12-01", "2025-01-01"],
+    price: 745
+  },
+  {
+    title: "Niagara Falls Adventure",
+    description: { en: "2-day adventure tour of Niagara Falls including Hornblower boat tour into the falls, Journey Behind the Falls tunnel walk, and scenic helicopter ride. Afternoon Niagara Wine Region tour with tastings. All transfers and meals included." },
+    guides: ["Robert Thompson"],
+    availableDates: ["2024-12-15", "2025-01-15", "2025-02-15"],
+    price: 560
+  },
+  {
+    title: "Alhambra & Granada Cultural",
+    description: { en: "2-day cultural immersion in Granada exploring the magnificent Alhambra palace, Islamic heritage sites, and traditional tapas culture. Includes expert art historian guide, flamenco dancing lesson, and visits to local artisan studios and markets." },
+    guides: ["Manuel Fernández"],
+    availableDates: ["2025-01-10", "2025-02-10", "2025-03-10"],
+    price: 490
+  },
+  {
+    title: "Mount Fuji Climbing Expedition",
+    description: { en: "4-day guided mountain climbing expedition up Mount Fuji with stay in mountain huts. Experience sunrise from the summit, visit crater lakes, and learn about sacred Shinto shrines. All meals, accommodations, and transportation included. Moderate to challenging fitness level required." },
+    guides: ["Takeshi Yamamoto"],
+    availableDates: ["2025-02-20", "2025-03-20", "2025-04-20"],
+    price: 820
+  },
+  {
+    title: "Barcelona Gaudí & Architecture",
+    description: { en: "3-day architectural and cultural tour focusing on Antoni Gaudí's masterpieces including Sagrada Familia, Park Güell, Casa Batlló, and Casa Milà. Includes expert architecture guide, museum entries, Gothic Quarter walking tour, and traditional Catalan cuisine." },
+    guides: ["Francesca Marquez"],
+    availableDates: ["2025-03-15", "2025-04-15", "2025-05-15"],
+    price: 695
   }
 ];
 

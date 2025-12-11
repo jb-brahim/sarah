@@ -3,10 +3,12 @@ import { useState } from "react"
 import { Heart, Trash2, Loader2 } from "lucide-react"
 import { Card } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
+import { useLanguage } from "@/lib/language-context"
 import useWishlist from "@/lib/hooks/use-wishlist"
 
 export default function WishlistSection() {
   const { items: wishlist, removeItem, clear } = useWishlist()
+  const { t } = useLanguage()
   const [loading] = useState(false)
 
   if (loading) {
@@ -21,9 +23,9 @@ export default function WishlistSection() {
     return (
       <div className="text-center py-12">
         <Heart className="w-12 h-12 text-muted-foreground/30 mx-auto mb-4" />
-        <h3 className="text-lg font-semibold text-foreground mb-2">Your Wishlist is Empty</h3>
+        <h3 className="text-lg font-semibold text-foreground mb-2">{t('wishlist.empty', 'Your Wishlist is Empty')}</h3>
         <p className="text-sm text-muted-foreground max-w-sm mx-auto">
-          Add your favorite sites, hotels, and tours to your wishlist to save them for later.
+          {t('wishlist.emptyDesc', 'Add your favorite sites, hotels, and tours to your wishlist to save them for later.')}
         </p>
       </div>
     )
@@ -33,8 +35,8 @@ export default function WishlistSection() {
     <div className="space-y-6">
       <div className="flex items-center justify-between">
         <div>
-          <h2 className="text-2xl font-bold text-foreground">My Wishlist</h2>
-          <p className="text-sm text-muted-foreground mt-1">{wishlist.length} saved items</p>
+          <h2 className="text-2xl font-bold text-foreground">{t('wishlist.title', 'My Wishlist')}</h2>
+          <p className="text-sm text-muted-foreground mt-1">{wishlist.length} {t('wishlist.savedItems', 'saved items')}</p>
         </div>
         <Button variant="outline" size="sm" onClick={clear}>
           Clear All

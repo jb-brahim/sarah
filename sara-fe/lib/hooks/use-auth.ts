@@ -39,5 +39,5 @@ export function useAuth() {
     setUser(null)
   }
 
-  return { user, setUser: saveAuth, logout, loading }
+  return { user, setUser: saveAuth, logout, loading, isLoading: loading }
 }

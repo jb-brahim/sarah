@@ -1,8 +1,9 @@
 "use client"
 import { useState } from "react"
+import Link from "next/link"
 import { Card } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
-import { User, LogOut, Settings, Heart } from "lucide-react"
+import { User, LogOut, Settings, Heart, Calendar } from "lucide-react"
 
 interface UserProfile {
   name: string
@@ -81,6 +82,12 @@ export default function UserProfile({ user, onLogout }: UserProfileProps) {
 
           {/* Actions */}
           <div className="p-4 space-y-2">
+            <Link href="/reservations" onClick={() => setIsOpen(false)}>
+              <Button variant="outline" className="w-full justify-start" size="sm">
+                <Calendar className="w-4 h-4 mr-2" />
+                My Reservations
+              </Button>
+            </Link>
             <Button variant="outline" className="w-full justify-start" size="sm">
               <Settings className="w-4 h-4 mr-2" />
               Settings

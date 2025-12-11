@@ -1,4 +1,11 @@
+"use client"
+
+import { Zap } from "lucide-react"
+import { useLanguage } from "@/lib/language-context"
+
 export default function HeroSection() {
+  const { t } = useLanguage()
+
   return (
     <section className="relative min-h-[600px] flex items-center justify-center overflow-hidden py-20">
       <div className="absolute inset-0 -z-10">
@@ -20,19 +27,19 @@ export default function HeroSection() {
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-8 animate-slide-up">
         <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 text-primary text-sm font-medium animate-fade-in-slow">
           <Zap size={16} />
-          Introducing the Future of Web Travel
+          {t('hero.badge', 'Introducing the Future of Web Travel')}
         </div>
 
         <h1 className="text-4xl sm:text-6xl font-bold text-pretty leading-tight">
           <span className="text-foreground inline-block animate-fade-in" style={{ animationDelay: "0.1s" }}>
-            Explore the world,
+            {t('hero.title1', 'Explore the world,')}
           </span>
           <br />
           <span
             className="bg-gradient-to-r from-primary to-accent/50 bg-clip-text text-transparent inline-block animate-fade-in"
             style={{ animationDelay: "0.2s" }}
           >
-            on your terms
+            {t('hero.title2', 'on your terms')}
           </span>
         </h1>
 
@@ -40,29 +47,29 @@ export default function HeroSection() {
           className="text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed animate-fade-in"
           style={{ animationDelay: "0.3s" }}
         >
-          AI-powered recommendations that respect your privacy. Build itineraries offline. Experience travel like never
-          before.
+          {t('hero.description', 'AI-powered recommendations that respect your privacy. Build itineraries offline. Experience travel like never before.')}
         </p>
 
         <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
-          <button className="px-8 py-3 bg-primary text-primary-foreground rounded-lg font-semibold hover:bg-primary/90 transition-smooth hover:shadow-lg hover:shadow-primary/20 hover:scale-105 animate-scale-in group relative overflow-hidden">
-            <span className="relative z-10">Start Exploring</span>
+          <a href="/destinations" className="px-8 py-3 bg-primary text-primary-foreground rounded-lg font-semibold hover:bg-primary/90 transition-smooth hover:shadow-lg hover:shadow-primary/20 hover:scale-105 animate-scale-in group relative overflow-hidden inline-block">
+            <span className="relative z-10">{t('hero.button1', 'Start Exploring')}</span>
             <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent transform -skew-x-12 group-hover:translate-x-96 transition-transform duration-1000"></div>
-          </button>
-          <button
-            className="px-8 py-3 border border-border rounded-lg font-semibold text-foreground hover:bg-secondary/50 transition-smooth hover:scale-105 animate-scale-in group relative overflow-hidden"
+          </a>
+          <a
+            href="/about"
+            className="px-8 py-3 border border-border rounded-lg font-semibold text-foreground hover:bg-secondary/50 transition-smooth hover:scale-105 animate-scale-in group relative overflow-hidden inline-block"
             style={{ animationDelay: "0.1s" }}
           >
-            <span className="relative z-10">Learn More</span>
+            <span className="relative z-10">{t('hero.button2', 'Learn More')}</span>
             <div className="absolute inset-0 bg-gradient-to-r from-primary/0 via-primary/10 to-primary/0 group-hover:via-primary/20 transition-all duration-500"></div>
-          </button>
+          </a>
         </div>
 
         <div className="grid grid-cols-3 gap-4 pt-12">
           {[
-            { icon: "100%", label: "Privacy First", delay: "0s" },
-            { icon: "5000+", label: "Destinations", delay: "0.1s" },
-            { icon: "Offline", label: "Always Ready", delay: "0.2s" },
+            { icon: "100%", label: t('hero.badge1', 'Privacy First'), delay: "0s" },
+            { icon: "5000+", label: t('hero.badge2', 'Destinations'), delay: "0.1s" },
+            { icon: "Offline", label: t('hero.badge3', 'Always Ready'), delay: "0.2s" },
           ].map((badge, idx) => (
             <div
               key={idx}
@@ -80,22 +87,5 @@ export default function HeroSection() {
         </div>
       </div>
     </section>
-  )
-}
-
-function Zap({ size }: { size: number }) {
-  return (
-    <svg
-      width={size}
-      height={size}
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    >
-      <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
-    </svg>
   )
 }

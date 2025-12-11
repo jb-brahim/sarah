@@ -1,406 +1,190 @@
 "use client"
+// Re-trigger build
 
-import { useState, useEffect } from "react"
-import { Globe2, Clock, Shield, Building2, Compass, Calendar, Heart, Map, Star } from "lucide-react"
+import { Shield, Instagram, Facebook, Twitter, Mail, ArrowRight, Sparkles, Globe2, Clock } from "lucide-react"
 import HeroSection from "@/components/hero-section"
-import RecommendationsSection from "@/components/recommendations-section"
-import ItineraryBuilder from "@/components/itinerary-builder"
-import FeatureShowcase from "@/components/feature-showcase"
-import PrivacyToggle from "@/components/privacy-toggle"
-import AuthModal from "@/components/auth-modal"
-import HotelsShowcase from "@/components/hotels-showcase"
-import ToursShowcase from "@/components/tours-showcase"
-import SitesShowcase from "@/components/sites-showcase-enhanced"
-import ReservationsSection from "@/components/reservations-section"
-import TranslationWidget from "@/components/translation-widget"
-import WeatherWidget from "@/components/weather-widget"
-import AdminPanel from "@/components/admin-panel"
-import UserProfile from "@/components/user-profile"
-import Button from "@/components/ui/button"
-import WishlistSection from "@/components/wishlist-section"
-import MapComponent from "@/components/map-component"
+import FeatureShowcase from "../components/feature-showcase"
+import TestimonialsSection from "../components/testimonials-section"
+import CtaSection from "../components/cta-section"
 import ToastDisplay from "@/components/toast-display"
 import { useToast } from "@/lib/hooks/use-toast-hook"
-import { useAuth } from "@/lib/hooks/use-auth"
-import { apiClient } from "@/lib/api-client"
-import { useLiveLocations } from "@/lib/hooks/use-live-locations"
+import { useLanguage } from "@/lib/language-context"
+import SiteHeader from "@/components/site-header"
+import Link from "next/link"
 
 export default function Home() {
-  const [showAI, setShowAI] = useState(true)
-  const [activeTab, setActiveTab] = useState<"explore" | "sites" | "hotels" | "tours" | "itinerary" | "reservations" | "translate" | "admin" | "wishlist" | "map">("explore")
-  const [authModalOpen, setAuthModalOpen] = useState(false)
-  const { user, setUser, logout } = useAuth()
-  const { toasts, addToast, removeToast } = useToast()
-  const { locations: liveLocations, loading: mapLoading } = useLiveLocations(activeTab === "map")
-  const [mapLocations, setMapLocations] = useState<any[]>([])
-
-  // Normalize coordinates and combine types (sites currently streamed). When other kinds
-  // (hotels/tours) need streaming, expand the SSE endpoint or merge as needed.
-  useEffect(() => {
-    const normalize = (items: any[]) => {
-      if (!items) return []
-      const defaultCenter: [number, number] = [2.3522, 48.8566]
-      return items.map((s: any, idx: number) => {
-        const coords = s.location?.coordinates || s.coordinates || [0, 0]
-        const isZero = coords[0] === 0 && coords[1] === 0
-        const coordinates = isZero ? [defaultCenter[0] + (idx % 10) * 0.02, defaultCenter[1] + (idx % 10) * 0.02] : coords
-        return {
-          _id: s._id || s.id,
-          name: s.name,
-          coordinates,
-          address: s.location?.address || s.address,
-          type: s.category ? 'site' : 'site',
-        }
-      })
-    }
-
-    setMapLocations(normalize(liveLocations))
-  }, [liveLocations])
+  const { toasts, removeToast } = useToast()
+  const { t } = useLanguage()
 
   return (
-    <main className="min-h-screen bg-gradient-to-br from-background via-secondary/30 to-background overflow-hidden">
-      {/* Header */}
-      <header className="sticky top-0 z-50 backdrop-blur-md bg-background/70 border-b border-border/50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex items-center justify-between">
-          <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-primary to-accent/50 flex items-center justify-center text-white font-bold text-xl">
-              ✈
-            </div>
-            <div className="flex flex-col">
-              <span className="font-bold text-foreground">Portail Touristique</span>
-              <span className="text-xs text-muted-foreground">Future of Travel</span>
-            </div>
-          </div>
+    <main className="min-h-screen bg-background text-foreground font-sans selection:bg-primary/20">
 
-          <div className="flex items-center gap-4">
-            <PrivacyToggle showAI={showAI} onToggle={setShowAI} />
-            {user ? (
-              <UserProfile user={user} onLogout={() => setUser(null)} />
-            ) : (
-              <Button variant="outline" size="sm" onClick={() => setAuthModalOpen(true)}>
-                Sign In
-              </Button>
-            )}
-          </div>
-        </div>
-      </header>
+      <SiteHeader />
 
       {/* Hero */}
-      <HeroSection />
+      <div id="hero" className="relative">
+        <HeroSection />
+        {/* Gradient overlay for smooth transition */}
+        <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-background to-transparent z-10" />
+      </div>
 
-      {/* Tab Navigation */}
-      <div className="sticky top-20 z-40 backdrop-blur-sm bg-background/50 border-b border-border/50 overflow-x-auto">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex gap-4 py-4 min-w-min">
-            <button
-              onClick={() => setActiveTab("explore")}
-              className={`pb-2 px-3 whitespace-nowrap font-medium transition-all duration-300 border-b-2 ${
-                activeTab === "explore"
-                  ? "border-primary text-primary"
-                  : "border-transparent text-muted-foreground hover:text-foreground"
-              }`}
-            >
-              <div className="flex items-center gap-2">
-                <Globe2 size={18} />
-                Discover
-              </div>
-            </button>
-            <button
-              onClick={() => setActiveTab("sites")}
-              className={`pb-2 px-3 whitespace-nowrap font-medium transition-all duration-300 border-b-2 ${
-                activeTab === "sites"
-                  ? "border-primary text-primary"
-                  : "border-transparent text-muted-foreground hover:text-foreground"
-              }`}
-            >
-              <div className="flex items-center gap-2">
-                <Compass size={18} />
-                Sites
-              </div>
-            </button>
-            <button
-              onClick={() => setActiveTab("hotels")}
-              className={`pb-2 px-3 whitespace-nowrap font-medium transition-all duration-300 border-b-2 ${
-                activeTab === "hotels"
-                  ? "border-primary text-primary"
-                  : "border-transparent text-muted-foreground hover:text-foreground"
-              }`}
-            >
-              <div className="flex items-center gap-2">
-                <Building2 size={18} />
-                Hotels
-              </div>
-            </button>
-            <button
-              onClick={() => setActiveTab("tours")}
-              className={`pb-2 px-3 whitespace-nowrap font-medium transition-all duration-300 border-b-2 ${
-                activeTab === "tours"
-                  ? "border-primary text-primary"
-                  : "border-transparent text-muted-foreground hover:text-foreground"
-              }`}
-            >
-              <div className="flex items-center gap-2">
-                <Clock size={18} />
-                Tours
-              </div>
-            </button>
-            <button
-              onClick={() => setActiveTab("itinerary")}
-              className={`pb-2 px-3 whitespace-nowrap font-medium transition-all duration-300 border-b-2 ${
-                activeTab === "itinerary"
-                  ? "border-primary text-primary"
-                  : "border-transparent text-muted-foreground hover:text-foreground"
-              }`}
-            >
-              <div className="flex items-center gap-2">
-                <Calendar size={18} />
-                Itinerary
-              </div>
-            </button>
-            {user && (
-              <>
-                <button
-                  onClick={() => setActiveTab("reservations")}
-                  className={`pb-2 px-3 whitespace-nowrap font-medium transition-all duration-300 border-b-2 ${
-                    activeTab === "reservations"
-                      ? "border-primary text-primary"
-                      : "border-transparent text-muted-foreground hover:text-foreground"
-                  }`}
-                >
-                  <div className="flex items-center gap-2">
-                    <Clock size={18} />
-                    My Reservations
-                  </div>
-                </button>
-                <button
-                  onClick={() => setActiveTab("translate")}
-                  className={`pb-2 px-3 whitespace-nowrap font-medium transition-all duration-300 border-b-2 ${
-                    activeTab === "translate"
-                      ? "border-primary text-primary"
-                      : "border-transparent text-muted-foreground hover:text-foreground"
-                  }`}
-                >
-                  <div className="flex items-center gap-2">
+      {/* Modern Grid Navigation (Bento Style) */}
+      <section className="py-24 relative overflow-hidden">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="text-center mb-16 max-w-3xl mx-auto animate-fade-in">
+            <span className="text-primary font-semibold tracking-wider text-sm uppercase mb-3 block">{t('journey.sectionTag', 'Start Your Journey')}</span>
+            <h2 className="text-4xl md:text-5xl font-bold mb-6 leading-tight">{t('journey.title', 'Explore the World Your Way')} <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent"></span></h2>
+            <p className="text-muted-foreground text-lg">{t('journey.description', 'Select a category to begin exploring our curated collection of experiences.')}</p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-12 gap-6 h-auto md:h-[600px]">
+
+            {/* Destinations - Large Card */}
+            <Link href="/destinations" className="md:col-span-8 group relative rounded-3xl overflow-hidden cursor-pointer shadow-lg hover:shadow-2xl transition-all duration-500 animate-slide-up">
+              <div className="absolute inset-0 bg-gray-900/20 group-hover:bg-gray-900/10 transition-colors z-10" />
+              <img src="https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?q=80&w=2070" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" alt="Destinations" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent z-20 flex flex-col justify-end p-8 md:p-12">
+                <div className="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
+                  <div className="flex items-center gap-2 text-accent mb-2 font-medium">
                     <Globe2 size={18} />
-                    Translate
+                    <span>{t('journey.topRated', 'Top Rated')}</span>
                   </div>
-                </button>
-                <button
-                  onClick={() => setActiveTab("wishlist")}
-                  className={`pb-2 px-3 whitespace-nowrap font-medium transition-all duration-300 border-b-2 ${
-                    activeTab === "wishlist"
-                      ? "border-primary text-primary"
-                      : "border-transparent text-muted-foreground hover:text-foreground"
-                  }`}
-                >
-                  <div className="flex items-center gap-2">
-                    <Heart size={18} />
-                    Wishlist
+                  <h3 className="text-3xl md:text-5xl font-bold text-white mb-4">{t('journey.destinations', 'Destinations')}</h3>
+                  <p className="text-gray-300 max-w-md mb-6 opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100">{t('journey.destinationsDesc', 'Explore ancient ruins, vibrant cities, and untouched landscapes across the globe.')}</p>
+                  <div className="flex items-center gap-2 text-white font-semibold group-hover:gap-4 transition-all">
+                    <span>{t('journey.startExploring', 'Start Exploring')}</span> <ArrowRight size={20} className="text-accent" />
                   </div>
-                </button>
-                <button
-                  onClick={() => setActiveTab("map")}
-                  className={`pb-2 px-3 whitespace-nowrap font-medium transition-all duration-300 border-b-2 ${
-                    activeTab === "map"
-                      ? "border-primary text-primary"
-                      : "border-transparent text-muted-foreground hover:text-foreground"
-                  }`}
-                >
-                  <div className="flex items-center gap-2">
-                    <Map size={18} />
-                    Map
-                  </div>
-                </button>
-              </>
-            )}
-            {user && user.isAdmin && (
-              <button
-                onClick={() => setActiveTab("admin")}
-                className={`pb-2 px-3 whitespace-nowrap font-medium transition-all duration-300 border-b-2 ${
-                  activeTab === "admin"
-                    ? "border-primary text-primary"
-                    : "border-transparent text-muted-foreground hover:text-foreground"
-                }`}
-              >
-                <div className="flex items-center gap-2">
-                  <Shield size={18} />
-                  Admin
                 </div>
-              </button>
-            )}
+              </div>
+            </Link>
+
+            <div className="md:col-span-4 flex flex-col gap-6">
+              {/* Hotels Card */}
+              <Link href="/hotels" className="flex-1 group relative rounded-3xl overflow-hidden cursor-pointer shadow-lg hover:shadow-2xl transition-all duration-500 animate-slide-up" style={{ animationDelay: "0.1s" }}>
+                <div className="absolute inset-0 bg-gray-900/20 group-hover:bg-gray-900/10 transition-colors z-10" />
+                <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?q=80&w=2070" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" alt="Hotels" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent z-20 flex flex-col justify-end p-8">
+                  <div className="transform translate-y-2 group-hover:translate-y-0 transition-transform duration-500">
+                    <div className="flex items-center gap-2 text-accent mb-1 font-medium">
+                      <Sparkles size={16} />
+                      <span>{t('journey.luxury', 'Luxury')}</span>
+                    </div>
+                    <h3 className="text-2xl font-bold text-white mb-2">{t('journey.stays', 'Stays')}</h3>
+                    <div className="flex items-center gap-2 text-white/90 text-sm">
+                      <span>{t('journey.viewCollection', 'View Collection')}</span> <ArrowRight size={14} />
+                    </div>
+                  </div>
+                </div>
+              </Link>
+
+              {/* Tours Card */}
+              <Link href="/tours" className="flex-1 group relative rounded-3xl overflow-hidden cursor-pointer shadow-lg hover:shadow-2xl transition-all duration-500 animate-slide-up" style={{ animationDelay: "0.2s" }}>
+                <div className="absolute inset-0 bg-gray-900/20 group-hover:bg-gray-900/10 transition-colors z-10" />
+                <img src="https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?q=80&w=2021" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" alt="Tours" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent z-20 flex flex-col justify-end p-8">
+                  <div className="transform translate-y-2 group-hover:translate-y-0 transition-transform duration-500">
+                    <div className="flex items-center gap-2 text-accent mb-1 font-medium">
+                      <Clock size={16} />
+                      <span>Adventures</span>
+                    </div>
+                    <h3 className="text-2xl font-bold text-white mb-2">{t('journey.experiences', 'Tours')}</h3>
+                    <div className="flex items-center gap-2 text-white/90 text-sm">
+                      <span>Find Experiences</span> <ArrowRight size={14} />
+                    </div>
+                  </div>
+                </div>
+              </Link>
+            </div>
           </div>
         </div>
+
+        {/* Decorative Elements */}
+        <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_50%_120%,rgba(120,119,198,0.1),rgba(255,255,255,0))]" />
+      </section>
+
+      <div id="about">
+        <FeatureShowcase />
       </div>
 
-      {/* Main Content */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        {activeTab === "explore" && (
-          <div className="space-y-12 animate-fade-in">
-            <RecommendationsSection showAI={showAI} />
-            <FeatureShowcase />
-          </div>
-        )}
-
-        {activeTab === "sites" && (
-          <div className="space-y-6 animate-fade-in">
-            <div>
-              <h2 className="text-3xl font-bold text-foreground mb-2">Tourist Sites</h2>
-              <p className="text-muted-foreground">Explore the most beautiful and historic sites around the world</p>
-            </div>
-            <SitesShowcase />
-          </div>
-        )}
-
-        {activeTab === "hotels" && (
-          <div className="space-y-6 animate-fade-in">
-            <div>
-              <h2 className="text-3xl font-bold text-foreground mb-2">Explore Hotels</h2>
-              <p className="text-muted-foreground">Discover the best accommodations for your trip</p>
-            </div>
-            <HotelsShowcase />
-          </div>
-        )}
-
-        {activeTab === "tours" && (
-          <div className="space-y-6 animate-fade-in">
-            <div>
-              <h2 className="text-3xl font-bold text-foreground mb-2">Guided Tours</h2>
-              <p className="text-muted-foreground">Book amazing guided tours and experiences</p>
-            </div>
-            <ToursShowcase />
-          </div>
-        )}
-
-        {activeTab === "itinerary" && (
-          <div className="animate-fade-in">
-            <ItineraryBuilder />
-          </div>
-        )}
-
-        {activeTab === "reservations" && user && (
-          <div className="space-y-6 animate-fade-in">
-            <div>
-              <h2 className="text-3xl font-bold text-foreground mb-2">My Reservations</h2>
-              <p className="text-muted-foreground">View and manage all your bookings</p>
-            </div>
-            <ReservationsSection />
-          </div>
-        )}
-
-        {activeTab === "translate" && user && (
-          <div className="space-y-6 animate-fade-in max-w-2xl">
-            <div>
-              <h2 className="text-3xl font-bold text-foreground mb-2">Translation Helper</h2>
-              <p className="text-muted-foreground">Translate content to any language while traveling</p>
-            </div>
-            <TranslationWidget />
-          </div>
-        )}
-
-        {activeTab === "admin" && user && user.isAdmin && (
-          <div className="space-y-6 animate-fade-in">
-            <div>
-              <h2 className="text-3xl font-bold text-foreground mb-2">Admin Dashboard</h2>
-              <p className="text-muted-foreground">Manage your platform and users</p>
-            </div>
-            <AdminPanel />
-          </div>
-        )}
-
-        {activeTab === "wishlist" && (
-          <div className="space-y-6 animate-fade-in">
-            <div>
-              <h2 className="text-3xl font-bold text-foreground mb-2">My Wishlist</h2>
-              <p className="text-muted-foreground">Saved sites, hotels and tours</p>
-            </div>
-            <WishlistSection />
-          </div>
-        )}
-
-        {activeTab === "map" && (
-          <div className="space-y-6 animate-fade-in">
-            <div>
-              <h2 className="text-3xl font-bold text-foreground mb-2">Map</h2>
-              <p className="text-muted-foreground">Explore locations on the map</p>
-            </div>
-            <MapComponent locations={mapLocations} />
-          </div>
-        )}
+      <div id="testimonials" className="bg-secondary/20">
+        <TestimonialsSection />
       </div>
 
-      {/* Footer */}
-      <footer className="border-t border-border/50 backdrop-blur-sm bg-background/50 mt-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
-            <div>
-              <h3 className="font-bold text-foreground mb-4">About</h3>
-              <p className="text-sm text-muted-foreground">
-                The future of web travel experiences with privacy-first design.
+      <CtaSection />
+
+      {/* Ultra Modern Footer */}
+      <footer className="bg-background border-t border-border pt-20 pb-10 relative overflow-hidden">
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[500px] bg-primary/5 rounded-full blur-[100px] -z-10" />
+
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
+
+            {/* Brand */}
+            <div className="space-y-6">
+              <Link href="/" className="flex items-center gap-2">
+                <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-primary to-accent flex items-center justify-center font-bold text-white text-xl shadow-lg">
+                  <Globe2 size={24} />
+                </div>
+                <span className="font-bold text-2xl tracking-tight">Dream<span className="text-primary">Travels</span></span>
+              </Link>
+              <p className="text-muted-foreground leading-relaxed">
+                Crafting the future of travel with AI-driven personalization and immersive experiences.
               </p>
+              <div className="flex gap-4">
+                {[Facebook, Instagram, Twitter].map((Icon, i) => (
+                  <a key={i} href="#" className="w-10 h-10 rounded-full bg-secondary flex items-center justify-center hover:bg-primary hover:text-white transition-all duration-300 hover:scale-110">
+                    <Icon size={18} />
+                  </a>
+                ))}
+              </div>
             </div>
+
+            {/* Quick Links */}
             <div>
-              <h3 className="font-bold text-foreground mb-4">Privacy</h3>
-              <ul className="space-y-2 text-sm">
-                <li>
-                  <a href="#" className="text-muted-foreground hover:text-primary transition">
-                    Privacy Policy
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="text-muted-foreground hover:text-primary transition">
-                    Data Security
-                  </a>
-                </li>
+              <h4 className="font-bold text-lg mb-6 flex items-center gap-2"><Sparkles size={16} className="text-accent" /> Explore</h4>
+              <ul className="space-y-4 text-muted-foreground">
+                <li><Link href="/destinations" className="hover:text-primary transition-colors flex items-center gap-2 hover:translate-x-1 duration-300">Destinations</Link></li>
+                <li><Link href="/hotels" className="hover:text-primary transition-colors flex items-center gap-2 hover:translate-x-1 duration-300">Hotels</Link></li>
+                <li><Link href="/tours" className="hover:text-primary transition-colors flex items-center gap-2 hover:translate-x-1 duration-300">Tours</Link></li>
               </ul>
             </div>
+
+            {/* Support */}
             <div>
-              <h3 className="font-bold text-foreground mb-4">Features</h3>
-              <ul className="space-y-2 text-sm">
-                <li>
-                  <a href="#" className="text-muted-foreground hover:text-primary transition">
-                    AI Recommendations
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="text-muted-foreground hover:text-primary transition">
-                    Offline Mode
-                  </a>
-                </li>
+              <h4 className="font-bold text-lg mb-6">Support</h4>
+              <ul className="space-y-4 text-muted-foreground">
+                <li><Link href="/contact" className="hover:text-primary transition-colors">Contact Us</Link></li>
+                <li><Link href="/faq" className="hover:text-primary transition-colors">FAQ</Link></li>
+                <li><Link href="/privacy" className="hover:text-primary transition-colors">Privacy Policy</Link></li>
               </ul>
             </div>
+
+            {/* Newsletter */}
             <div>
-              <h3 className="font-bold text-foreground mb-4">Developer</h3>
-              <ul className="space-y-2 text-sm">
-                <li>
-                  <a href="#" className="text-muted-foreground hover:text-primary transition">
-                    GitHub
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="text-muted-foreground hover:text-primary transition">
-                    Documentation
-                  </a>
-                </li>
-              </ul>
+              <h4 className="font-bold text-lg mb-6">Stay Updated</h4>
+              <p className="text-sm text-muted-foreground mb-4">Subscribe for exclusive offers and travel inspiration.</p>
+              <div className="flex gap-2">
+                <input type="email" placeholder="Your email" className="flex-1 bg-secondary rounded-lg px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-primary/20" />
+                <button className="bg-primary text-white p-2 rounded-lg hover:bg-primary/90 transition-colors">
+                  <ArrowRight size={18} />
+                </button>
+              </div>
             </div>
+
           </div>
 
-          <div className="border-t border-border/50 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
-            <p className="text-sm text-muted-foreground">
-              © 2026 Portail Touristique Intelligent. All rights reserved.
-            </p>
-            <div className="flex items-center gap-2 text-xs text-muted-foreground">
-              <Shield size={14} />
-              Privacy-First Design
+          <div className="border-t border-border pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-muted-foreground">
+            <p>© 2025 DreamTravels. Built for the Future.</p>
+            <div className="flex items-center gap-2 px-3 py-1 rounded-full bg-secondary/50">
+              <Shield size={14} className="text-primary" />
+              <span>Secure Booking</span>
             </div>
           </div>
         </div>
       </footer>
 
-      {/* Auth Modal */}
-      <AuthModal open={authModalOpen} onOpenChange={setAuthModalOpen} onSuccess={setUser} />
-      {/* Toasts (global) */}
       <ToastDisplay toasts={toasts} onRemove={removeToast} />
+
     </main>
   )
 }

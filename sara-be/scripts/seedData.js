@@ -302,10 +302,11 @@ const hotelsData = [
       type: 'Point',
       coordinates: [2.3657, 48.8611]
     },
+    price: 250,
     amenities: ["WiFi", "Gym", "Restaurant", "Bar", "Room Service", "Spa"],
     images: [
-      "https://source.unsplash.com/800x600/?hotel,paris",
-      "https://source.unsplash.com/800x600/?hotel,marais"
+      "https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?w=800&h=600&fit=crop",
+      "https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?w=800&h=600&fit=crop"
     ]
   },
   {
@@ -316,10 +317,11 @@ const hotelsData = [
       type: 'Point',
       coordinates: [-73.9793, 40.7648]
     },
+    price: 450,
     amenities: ["WiFi", "Gym", "Restaurant", "Bar", "Concierge", "Spa", "Pool"],
     images: [
-      "https://source.unsplash.com/800x600/?hotel,new+york",
-      "https://source.unsplash.com/800x600/?hotel,plaza"
+      "https://images.unsplash.com/photo-1566073771259-6a8506099945?w=800&h=600&fit=crop",
+      "https://images.unsplash.com/photo-1445019980597-93fa8acb246c?w=800&h=600&fit=crop"
     ]
   },
   {
@@ -330,10 +332,11 @@ const hotelsData = [
       type: 'Point',
       coordinates: [116.4519, 39.9075]
     },
+    price: 180,
     amenities: ["WiFi", "Gym", "Restaurant", "Bar", "Business Center", "Spa"],
     images: [
-      "https://source.unsplash.com/800x600/?hotel,beijing",
-      "https://source.unsplash.com/800x600/?hotel,china"
+      "https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=800&h=600&fit=crop",
+      "https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=800&h=600&fit=crop"
     ]
   },
   {
@@ -344,10 +347,11 @@ const hotelsData = [
       type: 'Point',
       coordinates: [12.4899, 41.9028]
     },
+    price: 220,
     amenities: ["WiFi", "Gym", "Restaurant", "Bar", "Rooftop Terrace"],
     images: [
-      "https://source.unsplash.com/800x600/?hotel,rome",
-      "https://source.unsplash.com/800x600/?hotel,italy"
+      "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=800&h=600&fit=crop",
+      "https://images.unsplash.com/photo-1564501049412-61c2a3083791?w=800&h=600&fit=crop"
     ]
   },
   {
@@ -358,10 +362,11 @@ const hotelsData = [
       type: 'Point',
       coordinates: [78.0467, 27.1801]
     },
+    price: 150,
     amenities: ["WiFi", "Restaurant", "Bar", "Taj Mahal View", "Garden"],
     images: [
-      "https://source.unsplash.com/800x600/?hotel,agra",
-      "https://source.unsplash.com/800x600/?taj+mahal"
+      "https://images.unsplash.com/photo-1596436889106-be35e843f974?w=800&h=600&fit=crop",
+      "https://images.unsplash.com/photo-1578683010236-d716f9a3f461?w=800&h=600&fit=crop"
     ]
   },
   {
@@ -372,10 +377,11 @@ const hotelsData = [
       type: 'Point',
       coordinates: [-72.2647, -12.2281]
     },
+    price: 200,
     amenities: ["WiFi", "Restaurant", "Nature Walks", "Spa", "Terrace"],
     images: [
-      "https://source.unsplash.com/800x600/?lodge,mountain",
-      "https://source.unsplash.com/800x600/?peru,lodge"
+      "https://images.unsplash.com/photo-1587061949409-02df41d5e562?w=800&h=600&fit=crop",
+      "https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?w=800&h=600&fit=crop"
     ]
   },
   {
@@ -386,10 +392,11 @@ const hotelsData = [
       type: 'Point',
       coordinates: [-43.1840, -22.9773]
     },
+    price: 350,
     amenities: ["WiFi", "Gym", "Restaurant", "Bar", "Beach Access", "Pool", "Spa"],
     images: [
-      "https://source.unsplash.com/800x600/?hotel,rio",
-      "https://source.unsplash.com/800x600/?hotel,beach,brazil"
+      "https://images.unsplash.com/photo-1571003123894-1f0594d2b5d9?w=800&h=600&fit=crop",
+      "https://images.unsplash.com/photo-1584132967334-10e028bd69f7?w=800&h=600&fit=crop"
     ]
   },
   {
@@ -400,10 +407,11 @@ const hotelsData = [
       type: 'Point',
       coordinates: [35.4272, 30.3286]
     },
+    price: 190,
     amenities: ["WiFi", "Restaurant", "Bar", "Tour Services", "Garden"],
     images: [
-      "https://source.unsplash.com/800x600/?hotel,desert",
-      "https://source.unsplash.com/800x600/?resort,jordan"
+      "https://images.unsplash.com/photo-1561501900-3701fa6a0864?w=800&h=600&fit=crop",
+      "https://images.unsplash.com/photo-1540541338287-41700207dee6?w=800&h=600&fit=crop"
     ]
   },
   {
@@ -414,10 +422,11 @@ const hotelsData = [
       type: 'Point',
       coordinates: [103.8674, 13.3667]
     },
+    price: 120,
     amenities: ["WiFi", "Restaurant", "Bar", "Tour Desk", "Spa"],
     images: [
-      "https://source.unsplash.com/800x600/?hotel,cambodia",
-      "https://source.unsplash.com/800x600/?angkor,hotel"
+      "https://images.unsplash.com/photo-1455587734955-081b22074882?w=800&h=600&fit=crop",
+      "https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?w=800&h=600&fit=crop"
     ]
   },
   {
@@ -428,10 +437,11 @@ const hotelsData = [
       type: 'Point',
       coordinates: [25.4615, 36.4176]
     },
+    price: 400,
     amenities: ["WiFi", "Pool", "Restaurant", "Bar", "Spa", "Sunset Views"],
     images: [
-      "https://source.unsplash.com/800x600/?hotel,santorini",
-      "https://source.unsplash.com/800x600/?greece,sunset"
+      "https://images.unsplash.com/photo-1613395877344-13d4a8e0d49e?w=800&h=600&fit=crop",
+      "https://images.unsplash.com/photo-1570077188670-e3a8d69ac5ff?w=800&h=600&fit=crop"
     ]
   },
   {
@@ -442,10 +452,11 @@ const hotelsData = [
       type: 'Point',
       coordinates: [-0.1494, 51.4998]
     },
+    price: 380,
     amenities: ["WiFi", "Gym", "Restaurant", "Bar", "Concierge", "Spa"],
     images: [
-      "https://source.unsplash.com/800x600/?hotel,london",
-      "https://source.unsplash.com/800x600/?london,luxury"
+      "https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?w=800&h=600&fit=crop",
+      "https://images.unsplash.com/photo-1566073771259-6a8506099945?w=800&h=600&fit=crop"
     ]
   },
   {
@@ -456,10 +467,11 @@ const hotelsData = [
       type: 'Point',
       coordinates: [-81.0895, 43.0896]
     },
+    price: 280,
     amenities: ["WiFi", "Gym", "Restaurant", "Bar", "Spa", "Falls View", "Pool"],
     images: [
-      "https://source.unsplash.com/800x600/?hotel,niagara",
-      "https://source.unsplash.com/800x600/?niagara+falls"
+      "https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?w=800&h=600&fit=crop",
+      "https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=800&h=600&fit=crop"
     ]
   }
 ];
@@ -487,105 +499,180 @@ const toursData = [
     description: { en: "A comprehensive 3-day guided tour of Paris covering all major attractions including the Eiffel Tower, Louvre Museum, Notre-Dame Cathedral, and the Champs-Élysées. Includes professional guide, hotel transfers, and dinner cruise on the Seine River." },
     guides: ["Jean-Pierre Dubois"],
     availableDates: ["2024-01-15", "2024-02-15", "2024-03-15"],
-    price: 890
+    duration: 3,
+    price: 890,
+    images: [
+      "https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=800&h=600&fit=crop",
+      "https://images.unsplash.com/photo-1511739001486-6bfe10ce785f?w=800&h=600&fit=crop"
+    ]
   },
   {
     title: "New York Experience",
     description: { en: "5-day immersive New York tour featuring iconic landmarks, Broadway shows, museums, and authentic local experiences. Includes Statue of Liberty tour, Central Park walk, Times Square, and visits to world-class museums. Professional guide and all transfers included." },
     guides: ["Sarah Johnson"],
     availableDates: ["2024-02-01", "2024-03-01", "2024-04-01"],
-    price: 1290
+    duration: 5,
+    price: 1290,
+    images: [
+      "https://images.unsplash.com/photo-1496442226666-8d4d0e62e6e9?w=800&h=600&fit=crop",
+      "https://images.unsplash.com/photo-1490644658840-3f2e3f8c5625?w=800&h=600&fit=crop"
+    ]
   },
   {
     title: "Great Wall Adventure",
     description: { en: "Unforgettable 4-day trek along the Great Wall of China with expert guides. Experience stunning landscapes, hike restored sections of the wall, visit watchtowers, and learn about ancient Chinese history. Includes accommodation, meals, and all necessary equipment." },
     guides: ["Zhang Wei"],
     availableDates: ["2024-03-10", "2024-04-10", "2024-05-10"],
-    price: 750
+    duration: 4,
+    price: 750,
+    images: [
+      "https://images.unsplash.com/photo-1508804185872-d7badad00f7d?w=800&h=600&fit=crop",
+      "https://images.unsplash.com/photo-1547981609-4b6bfe67ca0b?w=800&h=600&fit=crop"
+    ]
   },
   {
     title: "Roman History Tour",
     description: { en: "3-day immersive journey through ancient Rome exploring the Colosseum, Roman Forum, Pantheon, and Vatican City. Includes skip-the-line tickets, expert historian guide, and visits to lesser-known ancient sites. Perfect for history enthusiasts." },
     guides: ["Marco Rossi"],
     availableDates: ["2024-04-20", "2024-05-20", "2024-06-20"],
-    price: 650
+    duration: 3,
+    price: 650,
+    images: [
+      "https://images.unsplash.com/photo-1552832230-c0197dd311b5?w=800&h=600&fit=crop",
+      "https://images.unsplash.com/photo-1531572753322-ad063cecc140?w=800&h=600&fit=crop"
+    ]
   },
   {
     title: "Taj Mahal Experience",
     description: { en: "2-day romantic tour of Agra featuring the world-famous Taj Mahal, Agra Fort, and local markets. Includes sunrise and sunset visits to the monument, expert guide storytelling, and authentic Indian cuisine. Ideal for couples and photography enthusiasts." },
     guides: ["Rajesh Kumar"],
     availableDates: ["2024-05-15", "2024-06-15", "2024-07-15"],
-    price: 420
+    duration: 2,
+    price: 420,
+    images: [
+      "https://images.unsplash.com/photo-1564507592333-c60657eea523?w=800&h=600&fit=crop",
+      "https://images.unsplash.com/photo-1548013146-72479768bada?w=800&h=600&fit=crop"
+    ]
   },
   {
     title: "Machu Picchu Trek",
     description: { en: "Ultimate 5-day Incan Trail trek to Machu Picchu. Experience the breathtaking Andean landscapes, camp under the stars, and explore ancient Incan sites. Includes experienced guides, porters, meals, and all camping equipment. Not for beginners." },
     guides: ["Carlos Mamani"],
     availableDates: ["2024-06-01", "2024-07-01", "2024-08-01"],
-    price: 1100
+    duration: 5,
+    price: 1100,
+    images: [
+      "https://images.unsplash.com/photo-1587595431973-160d0d94add1?w=800&h=600&fit=crop",
+      "https://images.unsplash.com/photo-1526392060635-9d6019884377?w=800&h=600&fit=crop"
+    ]
   },
   {
     title: "Rio de Janeiro Beach & Culture",
     description: { en: "4-day tour of Rio de Janeiro including Christ the Redeemer statue, Sugarloaf Mountain cable car, Copacabana and Ipanema beaches, and samba culture. Includes professional guide, beach activities, and authentic Brazilian cuisine and nightlife." },
     guides: ["Carlos Silva"],
     availableDates: ["2024-07-05", "2024-08-05", "2024-09-05"],
-    price: 920
+    duration: 4,
+    price: 920,
+    images: [
+      "https://images.unsplash.com/photo-1483729558449-99ef09a8c325?w=800&h=600&fit=crop",
+      "https://images.unsplash.com/photo-1516306580123-e6e52b1b7b5f?w=800&h=600&fit=crop"
+    ]
   },
   {
     title: "Petra & Dead Sea Discovery",
     description: { en: "3-day desert adventure exploring the ancient rose-red city of Petra and floating in the Dead Sea. Includes expert guides explaining Nabatean history, visits to nearby Wadi Musa, and spa treatments using mineral-rich Dead Sea waters." },
     guides: ["Ahmed Hassan"],
     availableDates: ["2024-08-10", "2024-09-10", "2024-10-10"],
-    price: 580
+    duration: 3,
+    price: 580,
+    images: [
+      "https://images.unsplash.com/photo-1578895101408-1a36b834405b?w=800&h=600&fit=crop",
+      "https://images.unsplash.com/photo-1512632578888-169bbbc64f33?w=800&h=600&fit=crop"
+    ]
   },
   {
     title: "Angkor Wat & Temple Complex",
     description: { en: "4-day tour of Cambodia's most significant temples including the legendary Angkor Wat, Bayon Temple, and Ta Prohm. Includes sunrise viewing from temple tops, guided history lessons, visits to artisan villages, and authentic Khmer cooking class." },
     guides: ["Sokhai Meng"],
     availableDates: ["2024-09-01", "2024-10-01", "2024-11-01"],
-    price: 680
+    duration: 4,
+    price: 680,
+    images: [
+      "https://images.unsplash.com/photo-1563640214-4b5a6c0b3e5f?w=800&h=600&fit=crop",
+      "https://images.unsplash.com/photo-1528181304800-259b08848526?w=800&h=600&fit=crop"
+    ]
   },
   {
     title: "Santorini Romance Package",
     description: { en: "3-day romantic getaway in Santorini featuring white-washed villages, stunning sunsets, volcanic beaches, and local wine tasting. Includes boat tours, blue-domed church visits, traditional Greek dinner, and sunset sailing around the caldera." },
     guides: ["Dimitrios Papadopoulos"],
     availableDates: ["2024-10-15", "2024-11-15", "2024-12-15"],
-    price: 1050
+    duration: 3,
+    price: 1050,
+    images: [
+      "https://images.unsplash.com/photo-1613395877344-13d4a8e0d49e?w=800&h=600&fit=crop",
+      "https://images.unsplash.com/photo-1533104816931-20fa691ff6ca?w=800&h=600&fit=crop"
+    ]
   },
   {
     title: "London Royal & Historic",
     description: { en: "3-day comprehensive London tour visiting Buckingham Palace, Tower of London, Big Ben, Westminster Abbey, and the British Museum. Includes expert historian guide, traditional afternoon tea, and Thames River cruise with historical commentary." },
     guides: ["Elizabeth Williams"],
     availableDates: ["2024-11-01", "2024-12-01", "2025-01-01"],
-    price: 745
+    duration: 3,
+    price: 745,
+    images: [
+      "https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?w=800&h=600&fit=crop",
+      "https://images.unsplash.com/photo-1486299267070-83823f5448dd?w=800&h=600&fit=crop"
+    ]
   },
   {
     title: "Niagara Falls Adventure",
     description: { en: "2-day adventure tour of Niagara Falls including Hornblower boat tour into the falls, Journey Behind the Falls tunnel walk, and scenic helicopter ride. Afternoon Niagara Wine Region tour with tastings. All transfers and meals included." },
     guides: ["Robert Thompson"],
     availableDates: ["2024-12-15", "2025-01-15", "2025-02-15"],
-    price: 560
+    duration: 2,
+    price: 560,
+    images: [
+      "https://images.unsplash.com/photo-1489447068241-b3490214e879?w=800&h=600&fit=crop",
+      "https://images.unsplash.com/photo-1467139701929-c3b0b41516f6?w=800&h=600&fit=crop"
+    ]
   },
   {
     title: "Alhambra & Granada Cultural",
     description: { en: "2-day cultural immersion in Granada exploring the magnificent Alhambra palace, Islamic heritage sites, and traditional tapas culture. Includes expert art historian guide, flamenco dancing lesson, and visits to local artisan studios and markets." },
     guides: ["Manuel Fernández"],
     availableDates: ["2025-01-10", "2025-02-10", "2025-03-10"],
-    price: 490
+    duration: 2,
+    price: 490,
+    images: [
+      "https://images.unsplash.com/photo-1560969184-10fe8719e047?w=800&h=600&fit=crop",
+      "https://images.unsplash.com/photo-1558642452-9d2a7deb7f62?w=800&h=600&fit=crop"
+    ]
   },
   {
     title: "Mount Fuji Climbing Expedition",
     description: { en: "4-day guided mountain climbing expedition up Mount Fuji with stay in mountain huts. Experience sunrise from the summit, visit crater lakes, and learn about sacred Shinto shrines. All meals, accommodations, and transportation included. Moderate to challenging fitness level required." },
     guides: ["Takeshi Yamamoto"],
     availableDates: ["2025-02-20", "2025-03-20", "2025-04-20"],
-    price: 820
+    duration: 4,
+    price: 820,
+    images: [
+      "https://images.unsplash.com/photo-1490806843957-31f4c9a91c65?w=800&h=600&fit=crop",
+      "https://images.unsplash.com/photo-1576675784201-0e142b423952?w=800&h=600&fit=crop"
+    ]
   },
   {
     title: "Barcelona Gaudí & Architecture",
     description: { en: "3-day architectural and cultural tour focusing on Antoni Gaudí's masterpieces including Sagrada Familia, Park Güell, Casa Batlló, and Casa Milà. Includes expert architecture guide, museum entries, Gothic Quarter walking tour, and traditional Catalan cuisine." },
     guides: ["Francesca Marquez"],
     availableDates: ["2025-03-15", "2025-04-15", "2025-05-15"],
-    price: 695
+    duration: 3,
+    price: 695,
+    images: [
+      "https://images.unsplash.com/photo-1539037116277-4db20889f2d4?w=800&h=600&fit=crop",
+      "https://images.unsplash.com/photo-1583422409516-2895a77efded?w=800&h=600&fit=crop"
+    ]
   }
 ];
 

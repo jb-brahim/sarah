@@ -1,6 +1,7 @@
 "use client"
 
 import { useState, useEffect } from "react"
+import Link from "next/link"
 import { Calendar, Users, Clock, ArrowRight, Loader2 } from "lucide-react"
 import { apiClient } from "@/lib/api-client"
 
@@ -35,7 +36,7 @@ export default function ToursSection() {
                     description: getString(t.description),
                     price: t.price || 0,
                     duration: t.duration ? `${t.duration} days` : "Flexible",
-                    image: "https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?q=80&w=2021&auto=format&fit=crop" // Placeholder
+                    image: (t.images && t.images.length > 0) ? t.images[0] : "https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?q=80&w=2021&auto=format&fit=crop"
                 }))
                 setTours(mapped)
             } catch (error) {
@@ -76,9 +77,11 @@ export default function ToursSection() {
                             <p className="text-xs text-muted-foreground uppercase tracking-wider mb-1">Starting From</p>
                             <p className="text-2xl font-bold text-primary">${tour.price}</p>
                         </div>
-                        <button className="px-6 py-2.5 rounded-xl border-2 border-primary/20 bg-primary/5 text-primary font-bold hover:bg-primary hover:text-white hover:border-primary transition-all">
-                            Details
-                        </button>
+                        <Link href={`/tours/${tour.id}`}>
+                            <button className="px-6 py-2.5 rounded-xl border-2 border-primary/20 bg-primary/5 text-primary font-bold hover:bg-primary hover:text-white hover:border-primary transition-all">
+                                Details
+                            </button>
+                        </Link>
                     </div>
                 </div>
             ))}

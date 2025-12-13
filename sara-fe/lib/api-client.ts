@@ -158,12 +158,33 @@ export const apiClient = {
 
   // Reviews
   reviews: {
-    getByItem: (itemId: string) => fetch(`${API_BASE_URL}/reviews?itemId=${itemId}`).then(handleResponse),
-    create: (data: { itemId: string; itemType: string; rating: number; comment?: string }) =>
+    getByItem: (itemId: string, itemType?: string) => {
+      const params = new URLSearchParams({ itemId });
+      if (itemType) params.append('itemType', itemType);
+      return fetch(`${API_BASE_URL}/reviews?${params.toString()}`).then(handleResponse);
+    },
+
+    getByUser: (userId: string) =>
+      fetch(`${API_BASE_URL}/reviews/user/${userId}`).then(handleResponse),
+
+    create: (data: { itemId: string; itemType: string; rating: number; comment?: string; visitDate?: string }) =>
       fetch(`${API_BASE_URL}/reviews`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', ...getAuthHeader() },
         body: JSON.stringify(data),
+      }).then(handleResponse),
+
+    update: (id: string, data: { rating?: number; comment?: string; visitDate?: string }) =>
+      fetch(`${API_BASE_URL}/reviews/${id}`, {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json', ...getAuthHeader() },
+        body: JSON.stringify(data),
+      }).then(handleResponse),
+
+    delete: (id: string) =>
+      fetch(`${API_BASE_URL}/reviews/${id}`, {
+        method: 'DELETE',
+        headers: getAuthHeader(),
       }).then(handleResponse),
   },
 

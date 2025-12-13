@@ -31,6 +31,7 @@ interface Tour {
   availableDates: string[]
   guides?: string[]
   site: any
+  images?: string[]
 }
 
 export default function BookPage() {
@@ -156,10 +157,10 @@ export default function BookPage() {
           <div className="flex items-start justify-between mb-12">
             <div className="space-y-4 flex-1">
               <h1 className="text-5xl md:text-6xl font-bold">
-                Plan Your <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent">Perfect Trip</span>
+                {t('book.planYour', 'Plan Your')} <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent">{t('book.perfectTrip', 'Perfect Trip')}</span>
               </h1>
               <p className="text-xl text-muted-foreground max-w-2xl">
-                Book accommodations and tours for an unforgettable experience
+                {t('book.subtitle', 'Book accommodations and tours for an unforgettable experience')}
               </p>
             </div>
             <div className="ml-4">
@@ -171,17 +172,15 @@ export default function BookPage() {
           <div className="flex gap-4 mb-8 border-b border-border">
             <button
               onClick={() => setTab("hotels")}
-              className={`px-6 py-3 font-semibold transition-all border-b-2 ${
-                tab === "hotels" ? "border-primary text-primary" : "border-transparent text-muted-foreground"
-              }`}
+              className={`px-6 py-3 font-semibold transition-all border-b-2 ${tab === "hotels" ? "border-primary text-primary" : "border-transparent text-muted-foreground"
+                }`}
             >
               🏨 {t('header.hotels', 'Hotels')}
             </button>
             <button
               onClick={() => setTab("tours")}
-              className={`px-6 py-3 font-semibold transition-all border-b-2 ${
-                tab === "tours" ? "border-primary text-primary" : "border-transparent text-muted-foreground"
-              }`}
+              className={`px-6 py-3 font-semibold transition-all border-b-2 ${tab === "tours" ? "border-primary text-primary" : "border-transparent text-muted-foreground"
+                }`}
             >
               ✈️ {t('header.tours', 'Tours')}
             </button>
@@ -387,7 +386,11 @@ export default function BookPage() {
                   <div key={tour._id} className="group rounded-2xl border border-border bg-card hover:border-primary/50 transition-all duration-300 hover:shadow-lg overflow-hidden">
                     {/* Image */}
                     <div className="relative h-48 bg-gradient-to-br from-primary/20 to-accent/20 flex items-center justify-center overflow-hidden">
-                      <Globe2 className="w-16 h-16 text-primary/40" />
+                      {tour.images && tour.images[0] ? (
+                        <img src={tour.images[0]} alt={tour.title} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300" />
+                      ) : (
+                        <Globe2 className="w-16 h-16 text-primary/40" />
+                      )}
                       <button
                         onClick={() =>
                           wishlist.has(tour._id)
@@ -411,7 +414,7 @@ export default function BookPage() {
                             {tour.duration} {t("book.days", "days")}
                           </div>
                         )}
-                        {tour.guides?.length > 0 && (
+                        {tour.guides && tour.guides.length > 0 && (
                           <div className="flex items-center gap-2 text-muted-foreground text-xs">
                             👤 {tour.guides && tour.guides.length > 0 ? tour.guides.join(", ") : "N/A"}
                           </div>

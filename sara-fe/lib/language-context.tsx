@@ -1,6 +1,6 @@
 "use client"
 
-import React, { createContext, useContext, useState, useEffect } from 'react'
+import React, { createContext, useContext, useState, useEffect, useCallback, useMemo } from 'react'
 
 export type Language = 'en' | 'fr' | 'de' | 'ar'
 
@@ -138,7 +138,94 @@ const translations: Record<Language, Record<string, string>> = {
     'message.loading': 'Loading...',
     'message.error': 'Error',
     'message.success': 'Success',
+
     'message.removed': 'Removed',
+
+    // Recommendations Section
+    'rec.aiTitle': 'AI-Powered Recommendations',
+    'rec.popTitle': 'Popular Destinations',
+    'rec.aiDesc': 'Personalized for your interests with privacy preserved',
+    'rec.popDesc': 'Browse destinations around the world',
+    'rec.aiBadge': 'AI-Assisted',
+
+    // Site Header Additional
+    'header.signIn': 'Sign In',
+    'header.bookNow': 'Book Now',
+    'header.itinerary': 'Itinerary',
+
+    // Book Page
+    'book.loading': 'Loading experiences...',
+    'book.checkIn': 'Check-in',
+    'book.checkOut': 'Check-out',
+    'book.guests': 'Guests',
+    'book.search': 'Search',
+    'book.tourDate': 'Tour Date',
+    'book.participants': 'Participants',
+    'book.planYour': 'Plan Your',
+    'book.perfectTrip': 'Perfect Trip',
+    'book.subtitle': 'Book accommodations and tours for an unforgettable experience',
+
+    // Tags
+    'tags.History': 'History',
+    'tags.Adventure': 'Adventure',
+    'tags.Desert': 'Desert',
+    'tags.Beach': 'Beach',
+    'tags.Nature': 'Nature',
+    'tags.Culture': 'Culture',
+    'tags.Romance': 'Romance',
+    'tags.Urban': 'Urban',
+    'tags.Photography': 'Photography',
+    'tags.Food': 'Food',
+    'tags.Relaxation': 'Relaxation',
+    'tags.Luxury': 'Luxury',
+    'tags.Hiking': 'Hiking',
+    'tags.Lifestyle': 'Lifestyle',
+    'tags.Party': 'Party',
+    'tags.Architecture': 'Architecture',
+
+    // Destinations
+    'dest.1.name': 'Santorini',
+    'dest.1.region': 'Greece',
+    'dest.1.desc': 'Stunning caldera views and ancient history awaits',
+    'dest.2.name': 'Kyoto',
+    'dest.2.region': 'Japan',
+    'dest.2.desc': 'Temples, gardens, and traditional Japanese culture',
+    'dest.3.name': 'Barcelona',
+    'dest.3.region': 'Spain',
+    'dest.3.desc': 'Gaudí architecture and vibrant Mediterranean life',
+    'dest.4.name': 'Banff',
+    'dest.4.region': 'Canada',
+    'dest.4.desc': 'Majestic mountains and pristine wilderness',
+    'dest.5.name': 'Machu Picchu',
+    'dest.5.region': 'Peru',
+    'dest.5.desc': 'Ancient Incan citadel set high in the Andes Mountains',
+    'dest.6.name': 'Rome',
+    'dest.6.region': 'Italy',
+    'dest.6.desc': 'The Eternal City, home to the Colosseum and Vatican City',
+    'dest.7.name': 'Maui',
+    'dest.7.region': 'Hawaii, USA',
+    'dest.7.desc': 'Tropical paradise with beaches, volcanoes, and waterfalls',
+    'dest.8.name': 'Istanbul',
+    'dest.8.region': 'Turkey',
+    'dest.8.desc': 'Where East meets West, rich in culture and history',
+    'dest.9.name': 'London',
+    'dest.9.region': 'UK',
+    'dest.9.desc': 'Historic landmarks, world-class museums, and royal palaces',
+    'dest.10.name': 'Maldives',
+    'dest.10.region': 'Maldives',
+    'dest.10.desc': 'Overwater bungalows and crystal clear turquoise waters',
+    'dest.11.name': 'Cape Town',
+    'dest.11.region': 'South Africa',
+    'dest.11.desc': 'Stunning coastline, Table Mountain, and vibrant culture',
+    'dest.12.name': 'Sydney',
+    'dest.12.region': 'Australia',
+    'dest.12.desc': 'Iconic Opera House, Harbour Bridge, and Bondi Beach',
+    'dest.13.name': 'Petra',
+    'dest.13.region': 'Jordan',
+    'dest.13.desc': 'The Rose City, carved into pink sandstone cliffs',
+    'dest.14.name': 'Rio de Janeiro',
+    'dest.14.region': 'Brazil',
+    'dest.14.desc': 'Carnival spirit, Copacabana beach, and Christ the Redeemer',
   },
   fr: {
     // Header & Navigation
@@ -255,6 +342,7 @@ const translations: Record<Language, Record<string, string>> = {
     'pages.hotelsTitle': 'Découvrez Votre',
     'pages.hotelsDesc': 'Des hideaways boutique aux resorts 5 étoiles, nous avons curated les accommodations les plus exceptionnelles pour votre voyage.',
 
+
     // Footer
     'footer.company': 'Entreprise',
     'footer.about': 'À Propos de Nous',
@@ -265,7 +353,94 @@ const translations: Record<Language, Record<string, string>> = {
     'message.loading': 'Chargement...',
     'message.error': 'Erreur',
     'message.success': 'Succès',
+
     'message.removed': 'Supprimé',
+
+    // Recommendations Section
+    'rec.aiTitle': 'Recommandations IA',
+    'rec.popTitle': 'Destinations Populaires',
+    'rec.aiDesc': 'Personnalisé pour vos intérêts en préservant la confidentialité',
+    'rec.popDesc': 'Parcourez les destinations du monde entier',
+    'rec.aiBadge': 'Assisté par IA',
+
+    // Site Header Additional
+    'header.signIn': 'Se Connecter',
+    'header.bookNow': 'Réserver',
+    'header.itinerary': 'Itinéraire',
+
+    // Book Page
+    'book.loading': 'Chargement des expériences...',
+    'book.checkIn': 'Arrivée',
+    'book.checkOut': 'Départ',
+    'book.guests': 'Voyageurs',
+    'book.search': 'Rechercher',
+    'book.tourDate': 'Date du tour',
+    'book.participants': 'Participants',
+    'book.planYour': 'Planifiez Votre',
+    'book.perfectTrip': 'Voyage Parfait',
+    'book.subtitle': 'Réservez des hébergements et des visites pour une expérience inoubliable',
+
+    // Tags
+    'tags.History': 'Histoire',
+    'tags.Adventure': 'Aventure',
+    'tags.Desert': 'Désert',
+    'tags.Beach': 'Plage',
+    'tags.Nature': 'Nature',
+    'tags.Culture': 'Culture',
+    'tags.Romance': 'Romance',
+    'tags.Urban': 'Urbain',
+    'tags.Photography': 'Photographie',
+    'tags.Food': 'Gastronomie',
+    'tags.Relaxation': 'Détente',
+    'tags.Luxury': 'Luxe',
+    'tags.Hiking': 'Randonnée',
+    'tags.Lifestyle': 'Art de vivre',
+    'tags.Party': 'Fête',
+    'tags.Architecture': 'Architecture',
+
+    // Destinations
+    'dest.1.name': 'Santorin',
+    'dest.1.region': 'Grèce',
+    'dest.1.desc': 'Vues imprenables sur la caldeira et histoire ancienne',
+    'dest.2.name': 'Kyoto',
+    'dest.2.region': 'Japon',
+    'dest.2.desc': 'Temples, jardins et culture japonaise traditionnelle',
+    'dest.3.name': 'Barcelone',
+    'dest.3.region': 'Espagne',
+    'dest.3.desc': 'Architecture de Gaudí et vie méditerranéenne vibrante',
+    'dest.4.name': 'Banff',
+    'dest.4.region': 'Canada',
+    'dest.4.desc': 'Montagnes majestueuses et nature sauvage vierge',
+    'dest.5.name': 'Machu Picchu',
+    'dest.5.region': 'Pérou',
+    'dest.5.desc': 'Ancienne citadelle inca perchée dans les Andes',
+    'dest.6.name': 'Rome',
+    'dest.6.region': 'Italie',
+    'dest.6.desc': 'La Ville Éternelle, abritant le Colisée et le Vatican',
+    'dest.7.name': 'Maui',
+    'dest.7.region': 'Hawaii, USA',
+    'dest.7.desc': 'Paradis tropical avec plages, volcans et cascades',
+    'dest.8.name': 'Istanbul',
+    'dest.8.region': 'Turquie',
+    'dest.8.desc': 'Où l\'Est rencontre l\'Ouest, riche en culture et histoire',
+    'dest.9.name': 'Londres',
+    'dest.9.region': 'Royaume-Uni',
+    'dest.9.desc': 'Monuments historiques, musées de classe mondiale et palais royaux',
+    'dest.10.name': 'Maldives',
+    'dest.10.region': 'Maldives',
+    'dest.10.desc': 'Bungalows sur pilotis et eaux turquoise cristallines',
+    'dest.11.name': 'Le Cap',
+    'dest.11.region': 'Afrique du Sud',
+    'dest.11.desc': 'Côte magnifique, Montagne de la Table et culture vibrante',
+    'dest.12.name': 'Sydney',
+    'dest.12.region': 'Australie',
+    'dest.12.desc': 'Opéra emblématique, Harbour Bridge et plage de Bondi',
+    'dest.13.name': 'Pétra',
+    'dest.13.region': 'Jordanie',
+    'dest.13.desc': 'La Cité Rose, taillée dans les falaises de grès rose',
+    'dest.14.name': 'Rio de Janeiro',
+    'dest.14.region': 'Brésil',
+    'dest.14.desc': 'Esprit du carnaval, plage de Copacabana et Christ Rédempteur',
   },
   de: {
     // Header & Navigation
@@ -392,7 +567,94 @@ const translations: Record<Language, Record<string, string>> = {
     'message.loading': 'Laden...',
     'message.error': 'Fehler',
     'message.success': 'Erfolg',
+
     'message.removed': 'Entfernt',
+
+    // Recommendations Section
+    'rec.aiTitle': 'KI-gestützte Empfehlungen',
+    'rec.popTitle': 'Beliebte Ziele',
+    'rec.aiDesc': 'Personalisiert für Ihre Interessen mit Datenschutz',
+    'rec.popDesc': 'Durchsuchen Sie Ziele auf der ganzen Welt',
+    'rec.aiBadge': 'KI-Unterstützt',
+
+    // Site Header Additional
+    'header.signIn': 'Anmelden',
+    'header.bookNow': 'Jetzt Buchen',
+    'header.itinerary': 'Reiseroute',
+
+    // Book Page
+    'book.loading': 'Lade Erlebnisse...',
+    'book.checkIn': 'Anreise',
+    'book.checkOut': 'Abreise',
+    'book.guests': 'Gäste',
+    'book.search': 'Suchen',
+    'book.tourDate': 'Reisedatum',
+    'book.participants': 'Teilnehmer',
+    'book.planYour': 'Planen Sie Ihre',
+    'book.perfectTrip': 'Perfekte Reise',
+    'book.subtitle': 'Buchen Sie Unterkünfte und Touren für ein unvergessliches Erlebnis',
+
+    // Tags
+    'tags.History': 'Geschichte',
+    'tags.Adventure': 'Abenteuer',
+    'tags.Desert': 'Wüste',
+    'tags.Beach': 'Strand',
+    'tags.Nature': 'Natur',
+    'tags.Culture': 'Kultur',
+    'tags.Romance': 'Romantik',
+    'tags.Urban': 'Urban',
+    'tags.Photography': 'Fotografie',
+    'tags.Food': 'Essen',
+    'tags.Relaxation': 'Entspannung',
+    'tags.Luxury': 'Luxus',
+    'tags.Hiking': 'Wandern',
+    'tags.Lifestyle': 'Lebensstil',
+    'tags.Party': 'Feiern',
+    'tags.Architecture': 'Architektur',
+
+    // Destinations
+    'dest.1.name': 'Santorini',
+    'dest.1.region': 'Griechenland',
+    'dest.1.desc': 'Atemberaubende Caldera-Ausblicke und antike Geschichte erwarten Sie',
+    'dest.2.name': 'Kyoto',
+    'dest.2.region': 'Japan',
+    'dest.2.desc': 'Tempel, Gärten und traditionelle japanische Kultur',
+    'dest.3.name': 'Barcelona',
+    'dest.3.region': 'Spanien',
+    'dest.3.desc': 'Gaudí-Architektur und lebendiges mediterranes Leben',
+    'dest.4.name': 'Banff',
+    'dest.4.region': 'Kanada',
+    'dest.4.desc': 'Majestätische Berge und unberührte Wildnis',
+    'dest.5.name': 'Machu Picchu',
+    'dest.5.region': 'Peru',
+    'dest.5.desc': 'Antike Inka-Zitadelle hoch in den Anden',
+    'dest.6.name': 'Rom',
+    'dest.6.region': 'Italien',
+    'dest.6.desc': 'Die Ewige Stadt, Heimat des Kolosseums und der Vatikanstadt',
+    'dest.7.name': 'Maui',
+    'dest.7.region': 'Hawaii, USA',
+    'dest.7.desc': 'Tropisches Paradies mit Stränden, Vulkanen und Wasserfällen',
+    'dest.8.name': 'Istanbul',
+    'dest.8.region': 'Türkei',
+    'dest.8.desc': 'Wo Osten auf Westen trifft, reich an Kultur und Geschichte',
+    'dest.9.name': 'London',
+    'dest.9.region': 'UK',
+    'dest.9.desc': 'Historische Sehenswürdigkeiten, erstklassige Museen und königliche Paläste',
+    'dest.10.name': 'Malediven',
+    'dest.10.region': 'Malediven',
+    'dest.10.desc': 'Überwasser-Bungalows und kristallklares türkisfarbenes Wasser',
+    'dest.11.name': 'Kapstadt',
+    'dest.11.region': 'Südafrika',
+    'dest.11.desc': 'Atemberaubende Küste, Tafelberg und lebendige Kultur',
+    'dest.12.name': 'Sydney',
+    'dest.12.region': 'Australien',
+    'dest.12.desc': 'Ikonisches Opernhaus, Harbour Bridge und Bondi Beach',
+    'dest.13.name': 'Petra',
+    'dest.13.region': 'Jordanien',
+    'dest.13.desc': 'Die Rosenstadt, in rosa Sandsteinfelsen gehauen',
+    'dest.14.name': 'Rio de Janeiro',
+    'dest.14.region': 'Brasilien',
+    'dest.14.desc': 'Karnevalsstimmung, Copacabana-Strand und Christus der Erlöser',
   },
   ar: {
     // Header & Navigation
@@ -519,7 +781,94 @@ const translations: Record<Language, Record<string, string>> = {
     'message.loading': 'جاري التحميل...',
     'message.error': 'خطأ',
     'message.success': 'نجح',
+
     'message.removed': 'تم الحذف',
+
+    // Recommendations Section
+    'rec.aiTitle': 'توصيات مدعومة بالذكاء الاصطناعي',
+    'rec.popTitle': 'الوجهات الشهيرة',
+    'rec.aiDesc': 'مخصصة لاهتماماتك مع الحفاظ على الخصوصية',
+    'rec.popDesc': 'تصفح الوجهات حول العالم',
+    'rec.aiBadge': 'بمساعدة الذكاء الاصطناعي',
+
+    // Site Header Additional
+    'header.signIn': 'تسجيل الدخول',
+    'header.bookNow': 'احجز الآن',
+    'header.itinerary': 'خط سير الرحلة',
+
+    // Book Page
+    'book.loading': 'جاري تحميل التجارب...',
+    'book.checkIn': 'تسجيل الوصول',
+    'book.checkOut': 'تسجيل المغادرة',
+    'book.guests': 'الضيوف',
+    'book.search': 'بحث',
+    'book.tourDate': 'تاريخ الجولة',
+    'book.participants': 'المشاركون',
+    'book.planYour': 'خطط لـ',
+    'book.perfectTrip': 'رحلتك المثالية',
+    'book.subtitle': 'احجز أماكن الإقامة والجولات لتجربة لا تُنسى',
+
+    // Tags
+    'tags.History': 'تاريخ',
+    'tags.Adventure': 'مغامرة',
+    'tags.Desert': 'صحراء',
+    'tags.Beach': 'شاطئ',
+    'tags.Nature': 'طبيعة',
+    'tags.Culture': 'ثقافة',
+    'tags.Romance': 'رومانسية',
+    'tags.Urban': 'مدينة',
+    'tags.Photography': 'تصوير',
+    'tags.Food': 'طعام',
+    'tags.Relaxation': 'استرخاء',
+    'tags.Luxury': 'فخامة',
+    'tags.Hiking': 'مشي',
+    'tags.Lifestyle': 'أسلوب حياة',
+    'tags.Party': 'حفلات',
+    'tags.Architecture': 'عمارة',
+
+    // Destinations
+    'dest.1.name': 'سانتوريني',
+    'dest.1.region': 'اليونان',
+    'dest.1.desc': 'مناظر خلابة للكالديرا وتاريخ قديم في انتظارك',
+    'dest.2.name': 'كيوتو',
+    'dest.2.region': 'اليابان',
+    'dest.2.desc': 'المعابد والحدائق والثقافة اليابانية التقليدية',
+    'dest.3.name': 'برشلونة',
+    'dest.3.region': 'إسبانيا',
+    'dest.3.desc': 'عمارة غاودي وحياة البحر الأبيض المتوسط النابضة بالحياة',
+    'dest.4.name': 'بانف',
+    'dest.4.region': 'كندا',
+    'dest.4.desc': 'جبال مهيبة وطبيعة برية نقية',
+    'dest.5.name': 'ماتشو بيتشو',
+    'dest.5.region': 'بيرو',
+    'dest.5.desc': 'قلعة إنكا القديمة تقع عالياً في جبال الأنديز',
+    'dest.6.name': 'روما',
+    'dest.6.region': 'إيطاليا',
+    'dest.6.desc': 'المدينة الخالدة، موطن الكولوسيوم ومدينة الفاتيكان',
+    'dest.7.name': 'ماوي',
+    'dest.7.region': 'هاواي، الولايات المتحدة',
+    'dest.7.desc': 'جنة استوائية مع شواطئ وبراكين وشلالات',
+    'dest.8.name': 'إسطنبول',
+    'dest.8.region': 'تركيا',
+    'dest.8.desc': 'حيث يلتقي الشرق بالغرب، غنية بالثقافة والتاريخ',
+    'dest.9.name': 'لندن',
+    'dest.9.region': 'المملكة المتحدة',
+    'dest.9.desc': 'معالم تاريخية ومتاحف عالمية وقصور ملكية',
+    'dest.10.name': 'جزر المالديف',
+    'dest.10.region': 'جزر المالديف',
+    'dest.10.desc': 'أكواخ فوق الماء ومياه فيروزية صافية وضوح الشمس',
+    'dest.11.name': 'كيب تاون',
+    'dest.11.region': 'جنوب أفريقيا',
+    'dest.11.desc': 'ساحل مذهل وجبل الطاولة وثقافة نابضة بالحياة',
+    'dest.12.name': 'سيدني',
+    'dest.12.region': 'أستراليا',
+    'dest.12.desc': 'دار الأوبرا الشهيرة وجسر الميناء وشاطئ بوندي',
+    'dest.13.name': 'البتراء',
+    'dest.13.region': 'الأردن',
+    'dest.13.desc': 'المدينة الوردية، منحوتة في منحدرات الحجر الرملي الوردي',
+    'dest.14.name': 'ريو دي جانيرو',
+    'dest.14.region': 'البرازيل',
+    'dest.14.desc': 'روح الكرنفال وشاطئ كوباكابانا والمسيح الفادي',
   },
 }
 
@@ -535,10 +884,10 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
     setMounted(true)
   }, [])
 
-  const setLanguage = (lang: Language) => {
+  const setLanguage = useCallback((lang: Language) => {
     setLanguageState(lang)
     localStorage.setItem('language', lang)
-  }
+  }, [])
 
   useEffect(() => {
     try {
@@ -549,12 +898,14 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
     }
   }, [language])
 
-  const t = (key: string, defaultText: string = key): string => {
+  const t = useCallback((key: string, defaultText: string = key): string => {
     return translations[language]?.[key] || defaultText
-  }
+  }, [language])
+
+  const value = useMemo(() => ({ language, setLanguage, t }), [language, setLanguage, t])
 
   return (
-    <LanguageContext.Provider value={{ language, setLanguage, t }}>
+    <LanguageContext.Provider value={value}>
       {children}
     </LanguageContext.Provider>
   )

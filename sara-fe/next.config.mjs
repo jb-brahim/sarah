@@ -9,7 +9,20 @@ const nextConfig = {
     ignoreBuildErrors: true,
   },
   images: {
-    unoptimized: true,
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'images.unsplash.com',
+      },
+      {
+        protocol: 'https',
+        hostname: 'img-4.linternaute.com',
+      },
+      {
+        protocol: 'https',
+        hostname: 'tse2.mm.bing.net',
+      },
+    ],
   },
 }
 

@@ -12,13 +12,14 @@ interface Tour {
   id?: string
   title?: string
   name?: string
-  description: string | { en: string; [key: string]: string }
+  description: string | { en: string;[key: string]: string }
   destination?: string
   duration?: number
   price: number
   guides?: string[]
   availableDates?: string[]
   image?: string
+  images?: string[]
 }
 
 export default function ToursShowcase() {
@@ -41,9 +42,13 @@ export default function ToursShowcase() {
           key={`tour-${tour._id || tour.id}-${idx}`}
           className="overflow-hidden hover:shadow-lg transition-all duration-300 animate-slide-up"
         >
-          {tour.image && (
+          {(tour.image || (tour.images && tour.images.length > 0)) && (
             <div className="aspect-video bg-gradient-to-br from-primary/20 to-accent/20 flex items-center justify-center">
-              <img src={tour.image || "/placeholder.svg"} alt={tour.name} className="w-full h-full object-cover" />
+              <img
+                src={tour.image || (tour.images && tour.images[0]) || "/placeholder.svg"}
+                alt={tour.name || tour.title}
+                className="w-full h-full object-cover"
+              />
             </div>
           )}
           <div className="p-4 space-y-3">

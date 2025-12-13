@@ -9,12 +9,12 @@ interface UserProfile {
   name: string
   email: string
   avatar?: string
-  joinedDate: string
+  joinedDate?: string
   preferences?: string[]
 }
 
 interface UserProfileProps {
-  user: UserProfile | null
+  user: UserProfile & { id?: string } | null
   onLogout?: () => void
 }
 
@@ -60,7 +60,7 @@ export default function UserProfile({ user, onLogout }: UserProfileProps) {
             <div>
               <p className="text-xs text-muted-foreground mb-1">Member Since</p>
               <p className="text-sm font-medium text-foreground">
-                {new Date(user.joinedDate).toLocaleDateString()}
+                {user.joinedDate ? new Date(user.joinedDate).toLocaleDateString() : "2025"}
               </p>
             </div>
             {user.preferences && user.preferences.length > 0 && (

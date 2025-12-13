@@ -1,6 +1,7 @@
 "use client"
 
 import { useState, useEffect } from "react"
+import Link from "next/link"
 import { MapPin, Wifi, Star, ArrowRight, Loader2, BedDouble } from "lucide-react"
 import { apiClient } from "@/lib/api-client"
 
@@ -89,9 +90,11 @@ export default function HotelsSection() {
                                 <span className="text-xs text-muted-foreground block">Per Night</span>
                                 <span className="font-bold text-primary text-lg">{typeof hotel.price === 'number' ? `$${hotel.price}` : hotel.price}</span>
                             </div>
-                            <button className="w-10 h-10 rounded-full bg-accent text-accent-foreground flex items-center justify-center hover:bg-accent/90 transition-colors shadow-md">
-                                <ArrowRight size={18} />
-                            </button>
+                            <Link href={`/hotels/${hotel.id}`}>
+                                <button className="w-10 h-10 rounded-full bg-accent text-accent-foreground flex items-center justify-center hover:bg-accent/90 transition-colors shadow-md">
+                                    <ArrowRight size={18} />
+                                </button>
+                            </Link>
                         </div>
                     </div>
                 </div>

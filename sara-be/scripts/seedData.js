@@ -6,6 +6,7 @@ const mongoose = require('mongoose');
 const Site = require('../src/models/Site');
 const Hotel = require('../src/models/Hotel');
 const Tour = require('../src/models/Tour');
+const Destination = require('../src/models/Destination');
 
 const mongoUri = process.env.MONGO_URI || 'mongodb://localhost:27017/portail_touristique';
 const backendBase = process.env.BACKEND_URL || 'http://localhost:3000';
@@ -290,6 +291,51 @@ const sitesData = [
     ],
     category: "Monument",
     entryFee: 26
+  },
+  {
+    name: "Sidi Bou Said",
+    description: { en: "A picturesque Tunisian village famed for its iconic white-washed buildings with vibrant blue doors, windows, and balconies, perched on cliffs overlooking the Mediterranean Sea. It is a haven for artists and offers breathtaking views." },
+    location: {
+      type: 'Point',
+      coordinates: [10.3444, 36.8701],
+      address: "Sidi Bou Said, Tunis 2026, Tunisia"
+    },
+    images: [
+      "https://images.unsplash.com/photo-1590764536930-11b69515592a?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8c2lkaSUyMGJvdSUyMHNhaWR8ZW58MHx8MHx8fDA%3D",
+      "https://images.unsplash.com/photo-1641655058726-610039358cc9?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8c2lkaSUyMGJvdSUyMHNhaWR8ZW58MHx8MHx8fDA%3D"
+    ],
+    category: "Cultural",
+    entryFee: 0
+  },
+  {
+    name: "Carthage",
+    description: { en: "Explore the extensive ruins of the ancient Phoenician and Roman city-state of Carthage, a UNESCO World Heritage site. Key attractions include the Antonine Baths, the Roman Theater, and the Byrsa Hill archaeological site." },
+    location: {
+      type: 'Point',
+      coordinates: [10.3233, 36.8525],
+      address: "Carthage, Tunisia"
+    },
+    images: [
+      "https://images.unsplash.com/photo-1621360527339-dae52fb3874c?auto=format&fit=crop&q=80",
+      "https://images.unsplash.com/photo-1505051052528-6627f1c1015f?auto=format&fit=crop&q=80"
+    ],
+    category: "Historical",
+    entryFee: 12
+  },
+  {
+    name: "El Jem",
+    description: { en: "Home to the magnificent Thysdrus Amphitheatre, one of the largest and best-preserved Roman amphitheatres in the world. Often compared to the Colosseum, it stands as a testament to the grandeur of the Roman Empire in North Africa." },
+    location: {
+      type: 'Point',
+      coordinates: [10.7067, 35.2961],
+      address: "El Jem, Tunisia"
+    },
+    images: [
+      "https://images.unsplash.com/photo-1565019054705-7af003102431?auto=format&fit=crop&q=80",
+      "https://images.unsplash.com/photo-1616168969415-3e284a176e5d?auto=format&fit=crop&q=80"
+    ],
+    category: "Historical",
+    entryFee: 10
   }
 ];
 
@@ -473,6 +519,207 @@ const hotelsData = [
       "https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?w=800&h=600&fit=crop",
       "https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=800&h=600&fit=crop"
     ]
+  },
+  {
+    name: "The Residence Tunis",
+    description: "A luxury 5-star hotel in Gammarth with Arab-Andalusian architectural elegance. It features a world-renowned Thalasso spa, an 18-hole golf course, and private beach access.",
+    address: "Rue de la Côte d'Ivoire, La Marsa, Gammarth, Tunisia",
+    location: {
+      type: 'Point',
+      coordinates: [10.2800, 36.9200]
+    },
+    price: 320,
+    amenities: ["WiFi", "Gym", "Restaurant", "Bar", "Spa", "Golf", "Pool", "Beach Access"],
+    images: [
+      "https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=800&q=80"
+    ]
+  },
+  {
+    name: "La Badira",
+    description: "An exquisite adults-only boutique resort in Hammamet, inspired by the 1920s era. It offers minimalist design, stunning infinity pools, and a serene atmosphere with exceptional service.",
+    address: "Route Touristique, Hammamet 8050, Tunisia",
+    location: {
+      type: 'Point',
+      coordinates: [10.6000, 36.4000]
+    },
+    price: 280,
+    amenities: ["WiFi", "Gym", "Restaurant", "Bar", "Pool", "Spa", "Adults Only"],
+    images: [
+      "https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?auto=format&fit=crop&w=800&q=80"
+    ]
+  }
+];
+
+const destinationsData = [
+  {
+    id: "1",
+    name: "Santorini",
+    region: "Greece",
+    description: "Stunning caldera views and ancient history awaits",
+    image: "https://images.unsplash.com/photo-1570077188670-e3a8d69ac5ff?auto=format&fit=crop&w=800&q=80",
+    rating: 4.9,
+    tags: ["Beach", "History", "Romance"],
+    temperature: 28,
+  },
+  {
+    id: "2",
+    name: "Kyoto",
+    region: "Japan",
+    description: "Temples, gardens, and traditional Japanese culture",
+    image: "https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?auto=format&fit=crop&w=800&q=80",
+    rating: 4.8,
+    tags: ["Culture", "History", "Nature"],
+    temperature: 22,
+  },
+  {
+    id: "3",
+    name: "Barcelona",
+    region: "Spain",
+    description: "Gaudí architecture and vibrant Mediterranean life",
+    image: "https://images.unsplash.com/photo-1583422409516-2895a77efded?auto=format&fit=crop&w=800&q=80",
+    rating: 4.7,
+    tags: ["Architecture", "Urban", "Culture"],
+    temperature: 25,
+  },
+  {
+    id: "4",
+    name: "Banff",
+    region: "Canada",
+    description: "Majestic mountains and pristine wilderness",
+    image: "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=800&q=80",
+    rating: 4.9,
+    tags: ["Adventure", "Nature", "Photography"],
+    temperature: 15,
+  },
+  {
+    id: "5",
+    name: "Machu Picchu",
+    region: "Peru",
+    description: "Ancient Incan citadel set high in the Andes Mountains",
+    image: "https://images.unsplash.com/photo-1526392060635-9d6019884377?auto=format&fit=crop&w=800&q=80",
+    rating: 5.0,
+    tags: ["History", "Hiking", "Adventure"],
+    temperature: 18,
+  },
+  {
+    id: "6",
+    name: "Rome",
+    region: "Italy",
+    description: "The Eternal City, home to the Colosseum and Vatican City",
+    image: "https://images.unsplash.com/photo-1552832230-c0197dd311b5?auto=format&fit=crop&w=800&q=80",
+    rating: 4.8,
+    tags: ["History", "Food", "Urban"],
+    temperature: 24,
+  },
+  {
+    id: "7",
+    name: "Maui",
+    region: "Hawaii, USA",
+    description: "Tropical paradise with beaches, volcanoes, and waterfalls",
+    image: "https://images.unsplash.com/photo-1505852679233-d9fd70aff56d?auto=format&fit=crop&w=800&q=80",
+    rating: 4.9,
+    tags: ["Beach", "Nature", "Relaxation"],
+    temperature: 29,
+  },
+  {
+    id: "8",
+    name: "Istanbul",
+    region: "Turkey",
+    description: "Where East meets West, rich in culture and history",
+    image: "https://images.unsplash.com/photo-1524231757912-21f4fe3a7200?auto=format&fit=crop&w=800&q=80",
+    rating: 4.7,
+    tags: ["Culture", "History", "Food"],
+    temperature: 21,
+  },
+  {
+    id: "9",
+    name: "London",
+    region: "UK",
+    description: "Historic landmarks, world-class museums, and royal palaces",
+    image: "https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?auto=format&fit=crop&w=800&q=80",
+    rating: 4.6,
+    tags: ["History", "Urban", "Culture"],
+    temperature: 16,
+  },
+  {
+    id: "10",
+    name: "Maldives",
+    region: "Maldives",
+    description: "Overwater bungalows and crystal clear turquoise waters",
+    image: "https://images.unsplash.com/photo-1514282401047-d79a71a590e8?auto=format&fit=crop&w=800&q=80",
+    rating: 4.9,
+    tags: ["Beach", "Luxury", "Relaxation"],
+    temperature: 30,
+  },
+  {
+    id: "11",
+    name: "Cape Town",
+    region: "South Africa",
+    description: "Stunning coastline, Table Mountain, and vibrant culture",
+    image: "https://images.unsplash.com/photo-1580060839134-75a5edca2e99?auto=format&fit=crop&w=800&q=80",
+    rating: 4.8,
+    tags: ["Nature", "Adventure", "Beach"],
+    temperature: 20,
+  },
+  {
+    id: "12",
+    name: "Sydney",
+    region: "Australia",
+    description: "Iconic Opera House, Harbour Bridge, and Bondi Beach",
+    image: "https://images.unsplash.com/photo-1506973035872-a4ec16b8e8d9?auto=format&fit=crop&w=800&q=80",
+    rating: 4.8,
+    tags: ["Urban", "Beach", "Lifestyle"],
+    temperature: 23,
+  },
+  {
+    id: "13",
+    name: "Petra",
+    region: "Jordan",
+    description: "The Rose City, carved into pink sandstone cliffs",
+    image: "https://www.historyhit.com/app/uploads/bis-images/5160776/Petra-788x537.jpg?x10081",
+    rating: 4.9,
+    tags: ["History", "Adventure", "Desert"],
+    temperature: 26,
+  },
+  {
+    id: "14",
+    name: "Rio de Janeiro",
+    region: "Brazil",
+    description: "Carnival spirit, Copacabana beach, and Christ the Redeemer",
+    image: "https://images.unsplash.com/photo-1483729558449-99ef09a8c325?auto=format&fit=crop&w=800&q=80",
+    rating: 4.7,
+    tags: ["Beach", "Culture", "Party"],
+    temperature: 27,
+  },
+  {
+    id: "15",
+    name: "Sidi Bou Said",
+    region: "Tunisia",
+    description: "A picturesque village famed for its iconic white-washed buildings with vibrant blue doors, perched on cliffs overseeing the Mediterranean.",
+    image: "https://images.unsplash.com/photo-1590764536930-11b69515592a?auto=format&fit=crop&w=800&q=80",
+    rating: 4.9,
+    tags: ["Culture", "Beach", "Photography"],
+    temperature: 24,
+  },
+  {
+    id: "16",
+    name: "Carthage",
+    region: "Tunisia",
+    description: "Explore the ancient Phoenician and Roman ruins of Carthage, a UNESCO World Heritage site overlooking the Gulf of Tunis.",
+    image: "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/30/4e/47/f2/caption.jpg?w=600&h=400&s=1",
+    rating: 4.8,
+    tags: ["History", "Culture", "Ruins"],
+    temperature: 25,
+  },
+  {
+    id: "17",
+    name: "El Jem",
+    region: "Tunisia",
+    description: "Visit the magnificent Roman amphitheatre of El Jem, one of the best-preserved and largest in the world.",
+    image: "https://www.voyage-tunisie.com/cdn/tn-public/amphitheatre_del_jem.jpg",
+    rating: 4.7,
+    tags: ["History", "Architecture", "Monument"],
+    temperature: 22,
   }
 ];
 
@@ -598,8 +845,8 @@ const toursData = [
     duration: 4,
     price: 680,
     images: [
-      "https://images.unsplash.com/photo-1563640214-4b5a6c0b3e5f?w=800&h=600&fit=crop",
-      "https://images.unsplash.com/photo-1528181304800-259b08848526?w=800&h=600&fit=crop"
+      "https://media.tacdn.com/media/attractions-splice-spp-674x446/11/6c/0e/83.jpg",
+      "https://rootsabroadtravel.com/wp-content/uploads/2024/03/Ultimate-Guide-to-the-Best-Angkor-Wat-Temples-in-Cambodia-1170x600.jpg"
     ]
   },
   {
@@ -673,6 +920,30 @@ const toursData = [
       "https://images.unsplash.com/photo-1539037116277-4db20889f2d4?w=800&h=600&fit=crop",
       "https://images.unsplash.com/photo-1583422409516-2895a77efded?w=800&h=600&fit=crop"
     ]
+  },
+  {
+    title: "Sahara Desert 2-Day Adventure from Douz",
+    description: { en: "A magical journey into the Great Oriental Erg. Experience camel trekking over massive golden dunes, watch the sunset over the desert, and spend a night under the stars in a traditional Bedouin camp." },
+    guides: ["Hedi Ben Salem"],
+    availableDates: ["2024-03-20", "2024-04-20", "2024-05-20"],
+    duration: 2,
+    price: 150,
+    images: [
+      "https://guide-voyage-tunisie.com/wp-content/uploads/2022/11/balade-a-dos-de-dromadaire5-1-1024x768.webp",
+      "https://wildyness.com/uploads/0000/27/2022/08/09/night-in-the-desert-douz-wildynesscom.jpg"
+    ]
+  },
+  {
+    title: "Tunis Medina walking tour",
+    description: { en: "A guided exploration through the heart of the UNESCO-listed Tunis Medina. Navigate the bustling souks, admire the historic Zaytuna Mosque, and discover the rich heritage of Islamic architecture and traditional life." },
+    guides: ["Amel Mansouri"],
+    availableDates: ["2024-02-10", "2024-03-10", "2024-04-10"],
+    duration: 0.5,
+    price: 40,
+    images: [
+      "https://resaprivee.com/4461-large_default/half-day-guided-tour-to-the-medina-of-tunis.jpg",
+      "https://cdn.getyourguide.com/img/tour/a5ff829fcf4c40eb.jpeg/145.jpg"
+    ]
   }
 ];
 
@@ -685,6 +956,7 @@ async function seedDatabase() {
     await Site.deleteMany({});
     await Hotel.deleteMany({});
     await Tour.deleteMany({});
+    await Destination.deleteMany({});
     console.log('Cleared existing data');
 
     // Insert sites
@@ -702,6 +974,10 @@ async function seedDatabase() {
     // Insert hotels
     const insertedHotels = await Hotel.insertMany(hotelsData);
     console.log(`✅ Inserted ${insertedHotels.length} hotels`);
+
+    // Insert destinations
+    const insertedDestinations = await Destination.insertMany(destinationsData);
+    console.log(`✅ Inserted ${insertedDestinations.length} destinations`);
 
     // Insert tours
     const insertedTours = await Tour.insertMany(toursData);

@@ -155,12 +155,6 @@ const translations: Record<Language, Record<string, string>> = {
 
     // Book Page
     'book.loading': 'Loading experiences...',
-    'book.checkIn': 'Check-in',
-    'book.checkOut': 'Check-out',
-    'book.guests': 'Guests',
-    'book.search': 'Search',
-    'book.tourDate': 'Tour Date',
-    'book.participants': 'Participants',
     'book.planYour': 'Plan Your',
     'book.perfectTrip': 'Perfect Trip',
     'book.subtitle': 'Book accommodations and tours for an unforgettable experience',
@@ -370,12 +364,6 @@ const translations: Record<Language, Record<string, string>> = {
 
     // Book Page
     'book.loading': 'Chargement des expériences...',
-    'book.checkIn': 'Arrivée',
-    'book.checkOut': 'Départ',
-    'book.guests': 'Voyageurs',
-    'book.search': 'Rechercher',
-    'book.tourDate': 'Date du tour',
-    'book.participants': 'Participants',
     'book.planYour': 'Planifiez Votre',
     'book.perfectTrip': 'Voyage Parfait',
     'book.subtitle': 'Réservez des hébergements et des visites pour une expérience inoubliable',
@@ -584,12 +572,6 @@ const translations: Record<Language, Record<string, string>> = {
 
     // Book Page
     'book.loading': 'Lade Erlebnisse...',
-    'book.checkIn': 'Anreise',
-    'book.checkOut': 'Abreise',
-    'book.guests': 'Gäste',
-    'book.search': 'Suchen',
-    'book.tourDate': 'Reisedatum',
-    'book.participants': 'Teilnehmer',
     'book.planYour': 'Planen Sie Ihre',
     'book.perfectTrip': 'Perfekte Reise',
     'book.subtitle': 'Buchen Sie Unterkünfte und Touren für ein unvergessliches Erlebnis',
@@ -798,12 +780,6 @@ const translations: Record<Language, Record<string, string>> = {
 
     // Book Page
     'book.loading': 'جاري تحميل التجارب...',
-    'book.checkIn': 'تسجيل الوصول',
-    'book.checkOut': 'تسجيل المغادرة',
-    'book.guests': 'الضيوف',
-    'book.search': 'بحث',
-    'book.tourDate': 'تاريخ الجولة',
-    'book.participants': 'المشاركون',
     'book.planYour': 'خطط لـ',
     'book.perfectTrip': 'رحلتك المثالية',
     'book.subtitle': 'احجز أماكن الإقامة والجولات لتجربة لا تُنسى',
